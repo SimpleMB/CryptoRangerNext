@@ -4,7 +4,6 @@ const MainTemplate = () => {
   return (
     <div>
       <HeadIndex />
-      Hello
     </div>
   );
 }
