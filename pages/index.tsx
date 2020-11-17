@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import MainTemplate from '../templates/MainTemplate';
 
 export default function Home() {
