@@ -7,10 +7,20 @@ const HeadIndex = () => {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="author" content="Crypto Ranger"/>
       <meta name="description" content="Crypto projects reviews on Youtube and other social media. Request your free review for your blockchain project in different languages. Provide more information and let your future customers know more what your crypto project offer. We review ICO, exchanges, payment gateways and more..."/>
-      <meta name="og:title" content="Crypto Ranger - Best crypto reviews on Social Media"/>
-      <meta name="og:description" content="Crypto projects reviews on Youtube and other social media. Request your free review for your blockchain project in different languages. Provide more information and let your future customers know more what your crypto project offer. We review ICO, exchanges, payment gateways and more..."/>
-      // TODO : fill in propertiary image for facebook and twitter
-      <meta name="og:image" content=""/>
+
+      // TODO : fill in propertiary image for facebook 1200 pixels x 627 no more than 5MB
+      <meta property="og:image" content=""/>
+      <meta property="og:title" content="Crypto Ranger - Best crypto reviews on Social Media"/>
+      <meta property="og:description" content="Crypto projects reviews on Youtube and other social media. Request your free review for your blockchain project in different languages. Provide more information and let your future customers know more what your crypto project offer. We review ICO, exchanges, payment gateways and more..."/>
+      <meta property="og:type" content="website"/>
+
+      // TODO : fill in propertiary image for twitter no more that 1MB
+      <meta name="twitter:image" content=""/>
+      <meta name="twitter:title" content="Crypto Ranger - Best crypto reviews on Social Media"/>
+      <meta name="twitter:description" content="Crypto projects reviews on Youtube and other social media. Request your free review for your blockchain project in different languages. Provide more information and let your future customers know more what your crypto project offer. We review ICO, exchanges, payment gateways and more..."/>
+      <meta name="twitter:card" content="summary"/>
+
+
       <title>Crypto Ranger - Best crypto reviews on Social Media</title>
 
     </Head>
