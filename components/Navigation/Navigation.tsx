@@ -2,7 +2,7 @@ import Link from "next/link"
 import Logo from "../Logo/Logo"
 import styles from "./Navigation.module.scss"
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   return (
     <nav className={styles.navigation}>
       <Logo width={125} height={60}/>

@@ -1,0 +1,35 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  max-width: 1500px;
+  margin: 0px auto;
+}
+
+.aboutTopHeader {
+  align-self: flex-end;
+  width: 60%;
+  font-size: 64px;
+  font-weight: 900;
+  color: hsla(0, 0, 45, 100%);
+  text-align: right;
+  
+  span {
+    color: hsla(3, 68, 50, 100%);
+  }
+}
+
+.aboutParagraph {
+  width: 60%;
+  align-self: center;
+  padding: 150px 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.aboutBottomHeader {
+  width: 40%;
+  color: hsla(209, 61, 43, 100%);
+  font-weight: 900;
+  font-size: 64px;
+  text-align: center;
+}

@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import '../styles/global.scss'
 
 function MyApp({ Component, pageProps }) {
