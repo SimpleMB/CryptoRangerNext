@@ -1,0 +1,14 @@
+.hero {
+  display: flex;
+  height: calc(100vh - 60px);
+  max-width: 1500px;
+  margin: 60px auto 0;
+}
+
+.sectionLeft {
+  flex: 1;
+}
+
+.sectionRight {
+  flex: 1;
+}
