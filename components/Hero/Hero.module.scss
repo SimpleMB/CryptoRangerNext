@@ -1,14 +1,33 @@
 .hero {
   display: flex;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 80px);
   max-width: 1500px;
-  margin: 60px auto 0;
+  margin: 0 auto;
+}
+
+.sectionLeft,
+.sectionRight {
+  justify-self: center;
+  align-self: center;
+  width: 50%;
 }
 
 .sectionLeft {
-  flex: 1;
+  padding: 70px;
+
+  .heroHeader {
+    font-size: 72px;
+    font-size: calc(3vw + 10px);
+    font-weight: 900;
+    color: hsla(209, 61, 43, 100%);
+
+    span {
+      font-size: 88px;
+      font-size: calc(3vw + 30px);
+      color: hsla(43, 100, 44, 100%);
+    }
+  }
 }
 
 .sectionRight {
-  flex: 1;
 }
