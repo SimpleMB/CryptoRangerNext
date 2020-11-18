@@ -8,6 +8,7 @@
 .aboutTopHeader {
   align-self: flex-end;
   width: 60%;
+  padding: 75px 0;
   font-size: 64px;
   font-weight: 900;
   color: hsla(0, 0, 45, 100%);
@@ -19,15 +20,16 @@
 }
 
 .aboutParagraph {
-  width: 60%;
+  width: 40%;
   align-self: center;
-  padding: 150px 0;
+  padding: 75px 0;
   font-size: 24px;
   text-align: center;
 }
 
 .aboutBottomHeader {
   width: 40%;
+  padding: 75px 0;
   color: hsla(209, 61, 43, 100%);
   font-weight: 900;
   font-size: 64px;

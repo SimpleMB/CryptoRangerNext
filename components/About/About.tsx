@@ -15,7 +15,7 @@ const About: React.FC = () => {
       <h3 className={styles.aboutBottomHeader}>
         Stay connected to the community
       </h3>
-      <AboutStats />
+      <AboutStats views={150} subs={18} projects={25}/>
     </section>
   );
 };
