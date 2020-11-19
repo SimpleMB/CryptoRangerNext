@@ -1,0 +1,25 @@
+.clients {
+ max-width: 1500px;
+ margin: 100px auto;
+}
+
+.clientsHeader {
+  padding: 100px 0;
+  font-size: 64px;
+  font-weight: 900;
+  color: hsla(209, 61, 43, 100%);
+  text-align: right;
+}
+
+.clientsList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 300px;
+  column-gap: 130px;
+  align-items: center;
+  list-style: none;
+}
+
+.clientsCherrio {
+  padding-bottom: 40px;
+}
