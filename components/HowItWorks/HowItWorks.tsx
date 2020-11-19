@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import styles from './HowItWorks.module.scss';
+import HowItWorksPoint from './HowItWorksPoint';
 
 const HowItWorks = () => {
   return (
@@ -7,16 +7,13 @@ const HowItWorks = () => {
       <h3 className={styles.clientsHeader}>How it works</h3>
       <ul className={styles.clientsList}>
         <li>
-          <Image src="/images/clientsCryptoExpo.png" width={225} height={150} />
+          <HowItWorksPoint id={1} title="Sign up" description="hello this is description. How are you?"/>
         </li>
         <li>
-          <Image src="/images/clientsPhore.png" width={365} height={111} />
+        <HowItWorksPoint id={2} title="Sign up" description="hello this is description. How are you?"/>
         </li>
         <li className={styles.clientsCherrio}>
-          <Image src="/images/clientsCherrio.png" width={390} height={120} />
-        </li>
-        <li>
-          <Image src="/images/clientsGentarium.png" width={519} height={159} />
+        <HowItWorksPoint id={3} title="Sign up" description="hello this is description. How are you?"/>
         </li>
       </ul>
     </section>
