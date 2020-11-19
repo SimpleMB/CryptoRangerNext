@@ -1,0 +1,26 @@
+.sectionDivider {
+  height: 3px;
+  max-width: 1500px;
+  margin: 50px auto 0;
+  div {
+    width: calc(100vw / 3);
+    height: 100%;
+    background-color: hsla(43, 100, 44, 100%);
+  }
+}
+
+.sectionDividerLeft {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sectionDividerRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sectionDividerCenter {
+  display: flex;
+  justify-content: center;
+}
+  
