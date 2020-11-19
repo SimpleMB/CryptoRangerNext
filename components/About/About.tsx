@@ -3,7 +3,7 @@ import AboutStats from './AboutStats';
 
 const About: React.FC = () => {
   return (
-    <section className={styles.about}>
+    <section className={styles.about} id="about">
       <h2 className={styles.aboutTopHeader}>
         Crypto Ranger is a <span>YouTube</span> marketing channel for your
         crypto projects

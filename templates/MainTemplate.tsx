@@ -2,6 +2,7 @@ import About from "../components/About/About"
 import Clients from "../components/Clients/Clients"
 import HeadIndex from "../components/HeadIndex/Head"
 import Hero from "../components/Hero/Hero"
+import HowItWorks from "../components/HowItWorks/HowItWorks"
 import Navigation from "../components/Navigation/Navigation"
 import SectionDivider from "../components/SectionDivider/SectionDivider"
 
@@ -11,10 +12,12 @@ const MainTemplate: React.FC = () => {
       <HeadIndex />
       <Navigation />
       <Hero />
-      <SectionDivider side='right'/>
+      <SectionDivider side="right"/>
       <About />
-      <SectionDivider side='right'/>
+      <SectionDivider side='left'/>
       <Clients />
+      <SectionDivider side='right'/>
+      <HowItWorks />
     </>
   );
 }

@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import styles from './Clients.module.scss';
+import styles from './HowItWorks.module.scss';
 
-const Clients = () => {
+const HowItWorks = () => {
   return (
-    <section className={styles.clients} id="clients">
-      <h3 className={styles.clientsHeader}>Clients</h3>
+    <section className={styles.clients} id="howitworks">
+      <h3 className={styles.clientsHeader}>How it works</h3>
       <ul className={styles.clientsList}>
         <li>
           <Image src="/images/clientsCryptoExpo.png" width={225} height={150} />
@@ -23,4 +23,4 @@ const Clients = () => {
   );
 };
 
-export default Clients;
+export default HowItWorks;
