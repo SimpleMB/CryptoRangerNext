@@ -7,15 +7,14 @@ interface HowItWorksPointProps {
 }
 
 const HowItWorksPoint: React.FC<HowItWorksPointProps> = (props) => {
+  const { id, title, description } = props;
   return (
-    <section className={styles.hiwPoint}>
+    <div className={styles.hiwPoint}>
       <h3 className={styles.hiwHeader}>
-        {props.title} <span>{props.id}.</span>
+        {title} <span>{id}.</span>
       </h3>
-      <p className={styles.hiwParagraph}>
-        {props.description}
-      </p>
-    </section>
+      <p className={styles.hiwParagraph}>{description}</p>
+    </div>
   );
 };
 

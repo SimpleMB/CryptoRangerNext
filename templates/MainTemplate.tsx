@@ -18,6 +18,7 @@ const MainTemplate: React.FC = () => {
       <Clients />
       <SectionDivider side='right'/>
       <HowItWorks />
+      <SectionDivider side='left'/>
     </>
   );
 }

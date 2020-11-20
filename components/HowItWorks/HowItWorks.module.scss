@@ -1,9 +1,9 @@
-.clients {
+.hiw {
   max-width: 1500px;
   margin: 0 auto;
  }
  
- .clientsHeader {
+ .hiwHeader {
    padding: 75px 0;
    font-size: 64px;
    font-weight: 900;
@@ -11,22 +11,20 @@
    text-align: right;
  }
  
- .clientsList {
+ .hiwList {
+   list-style: none;
    display: flex;
    flex-direction: column;
-   list-style: none;
+   align-items: center;
 
    li {
-     width: 50%;
-     align-self: flex-end;
+     width: 500px;
+     margin-left: -35%;
+     text-align: center;
     }
     
     li:nth-child(even) {
-      align-self: flex-start;
-      text-align: right;
+      margin-left: unset;
+      margin-right: -35%;
    }
- }
- 
- .clientsCherrio {
-   padding-bottom: 40px;
  }

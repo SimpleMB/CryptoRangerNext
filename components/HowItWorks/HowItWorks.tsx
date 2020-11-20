@@ -39,9 +39,9 @@ const HowItWorks: React.FC = () => {
     </li>
   ));
   return (
-    <section className={styles.clients} id="howitworks">
-      <h3 className={styles.clientsHeader}>How it works</h3>
-      <ul className={styles.clientsList}>
+    <section className={styles.hiw} id="howitworks">
+      <h3 className={styles.hiwHeader}>How it works</h3>
+      <ul className={styles.hiwList}>
         {howItWorksPointList}
       </ul>
     </section>
