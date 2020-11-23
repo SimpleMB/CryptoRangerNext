@@ -1,31 +1,29 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { cardDataTypes } from './Pricing';
+import CardPerkList from './CardPerkList';
+import { CardDataTypes } from './Pricing';
 import styles from './PricingCard.module.scss';
 
 interface PricingCardProps {
-  data: cardDataTypes;
+  data: CardDataTypes;
 }
 
 const PricingCard: React.FC<PricingCardProps> = (props) => {
-  const { type, priceCents, saleCents, language, flagUri, perks } = props.data;
+  const { type, priceCents, saleCents, language, flagUri } = props.data;
+
   return (
     <li className={type === 'free' ? styles.freeCard : styles.paidCard}>
       <div className={styles.cardHeader}>
         <Image src={flagUri} height={200} width={100} />
-        <h3>{language.toUpperCase()}</h3>
+        <h3>{type === 'free' ? 'Free' : language.toUpperCase()}</h3>
       </div>
-      <Link href=''>
+      <h4 className={styles.cardPrice}>${priceCents / 100}</h4>
+      <Link href="">
         <a className={styles.requestReviewBtn}>Request Review</a>
       </Link>
-      <ul>
-
-      </ul>
+      <CardPerkList type={type} />
     </li>
   );
 };
 
 export default PricingCard;
-
-
-// TODO: Perks list with title and description and perk component
