@@ -1,11 +1,18 @@
+.card {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .freeCard {
-
+  background-color: hsla(0, 0, 97, 100%);
 }
-
 .paidCard {
-
+  background-color: hsla(211, 51, 50, 100%);
+  color: white;
 }
 
-.cardHeader {
-
+.cardHeader,
+.cardPrice {
+  text-align: center;
 }
