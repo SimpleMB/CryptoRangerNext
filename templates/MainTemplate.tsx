@@ -4,6 +4,7 @@ import HeadIndex from "../components/HeadIndex/Head"
 import Hero from "../components/Hero/Hero"
 import HowItWorks from "../components/HowItWorks/HowItWorks"
 import Navigation from "../components/Navigation/Navigation"
+import Pricing from "../components/Pricing/Pricing"
 import SectionDivider from "../components/SectionDivider/SectionDivider"
 
 const MainTemplate: React.FC = () => {
@@ -18,7 +19,8 @@ const MainTemplate: React.FC = () => {
       <Clients />
       <SectionDivider side='right'/>
       <HowItWorks />
-      <SectionDivider side='left'/>
+      <SectionDivider side='right'/>
+      <Pricing />
     </>
   );
 }
