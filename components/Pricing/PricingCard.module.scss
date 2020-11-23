@@ -1,11 +1,15 @@
 .card {
-  width: 300px;
-  padding: 10px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 600px;
+  padding: 50px 50px;
+  border-radius: 20px;
 }
 
 .freeCard {
-  background-color: hsla(0, 0, 97, 100%);
+  background-color: hsla(0, 0, 95, 100%);
 }
 .paidCard {
   background-color: hsla(211, 51, 50, 100%);
@@ -15,4 +19,55 @@
 .cardHeader,
 .cardPrice {
   text-align: center;
+  font-weight: 900;
+}
+
+.cardHeader {
+  font-size: 48px;
+}
+
+.cardPrice {
+  padding: 50px;
+  line-height: 0.6;
+  font-size: 72px;
+  display: flex;
+  justify-content: center;
+
+  span {
+    font-weight: 400;
+    font-size: 24px;
+  }
+}
+
+.requestReviewBtn {
+  display: block;
+  width: 300px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.requestReviewBtnFree {
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.requestReviewBtnPaid {
+  background-color: hsla(6, 85, 73, 100%);
+  color: white;
+  font-weight: 900;
+}
+
+.cardLine {
+  width: 240px;
+  height: 1px;
+  background-color: hsla(0, 0, 100, 100%);
+}
+
+.cardLineFree {
+  width: 240px;
+  height: 1px;
+  background-color: hsla(6, 85, 73, 100%);
 }

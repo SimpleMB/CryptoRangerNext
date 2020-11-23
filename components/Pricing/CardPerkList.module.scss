@@ -1,0 +1,19 @@
+.perkList {
+  align-self: flex-start;
+  list-style: none;
+  padding: 30px 0;
+}
+
+.perkListItem {
+  padding: 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+
+  img {
+    margin-right: 20px;
+  }
+
+  span {
+    font-weight: 900;
+  }
+}

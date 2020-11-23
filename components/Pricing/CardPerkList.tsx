@@ -7,7 +7,7 @@ interface CardPerkListProps {
 
 const CardPerkList: React.FC<CardPerkListProps> = (props) => {
   const freePerks = (
-    <ul>
+    <ul  className={styles.perkList}>
       <li className={styles.perkListItem}>
         <p>
           <img src="/images/perkDotFree.svg" alt="perk dot" /> Review ready in 7
@@ -18,7 +18,7 @@ const CardPerkList: React.FC<CardPerkListProps> = (props) => {
   );
 
   const paidPerks = (
-    <ul>
+    <ul className={styles.perkList}>
       <li className={styles.perkListItem}>
         <p>
           <img src="/images/perkDot.svg" alt="perk dot" />
