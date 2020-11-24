@@ -3,7 +3,7 @@ import { CardDataTypes } from './Pricing';
 
 interface CardPerkListProps {
   type: CardDataTypes['type'];
-  lang: 'Polish' | 'English';
+  lang: string;
 }
 
 const CardPerkList: React.FC<CardPerkListProps> = (props) => {
