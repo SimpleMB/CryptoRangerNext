@@ -22,7 +22,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
       <div>
         <h3 className={styles.cardHeader}>
           <img src={flagUri} alt={language + ' flag'} />
-          {type === 'free' ? 'Free' : "Pro"}
+          {type === 'free' ? 'Free' : langUpperCase}
         </h3>
       </div>
       <h4 className={styles.cardPrice}>
