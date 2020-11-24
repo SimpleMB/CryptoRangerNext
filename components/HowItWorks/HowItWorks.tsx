@@ -24,7 +24,7 @@ const howItWorksData: howItWorksPointData[] = [
     id: 3,
     title: 'Review',
     description:
-      'Reviewer will analize the information you provided. Add information from the project’s website and create a review ready for your approval.',
+      'Reviewer will analize the information you providedand add information from the project’s website. Then create a review ready for your approval.',
   },
 ];
 
