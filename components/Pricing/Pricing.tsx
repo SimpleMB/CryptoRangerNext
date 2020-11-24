@@ -8,6 +8,7 @@ export interface PerksData {
 }
 
 export interface CardDataTypes {
+  id: number;
   type: 'free' | 'paid';
   priceCents: number;
   saleCents: number;
@@ -15,35 +16,36 @@ export interface CardDataTypes {
   flagUri: string;
 }
 
-
-
 const pricingCardsData: CardDataTypes[] = [
   {
+    id: 0,
     type: 'free',
     priceCents: 0,
     saleCents: 0,
     language: 'polish',
-    flagUri: '/polishFlag.png',
+    flagUri: '/images/plFlag.svg',
   },
   {
+    id: 1,
     type: 'paid',
     priceCents: 15000,
     saleCents: 5000,
     language: 'english',
-    flagUri: '/engilshFlag.png',
+    flagUri: '/images/gbFlag.svg',
   },
   {
+    id: 2,
     type: 'paid',
     priceCents: 15000,
     saleCents: 5000,
     language: 'polish',
-    flagUri: '/engilshFlag.png',
+    flagUri: '/images/plFlag.svg',
   },
 ];
 
 const Pricing = () => {
   const pricingList = pricingCardsData.map((card) => (
-    <PricingCard data={card} />
+    <PricingCard data={card} key={card.id} />
   ));
   return (
     <section className={styles.pricing} id="pricing">
@@ -54,3 +56,5 @@ const Pricing = () => {
 };
 
 export default Pricing;
+
+// TODO Additional features info box

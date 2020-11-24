@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import firstLetterUppercase from '../../utils/firstLetterUppercase';
 import CardPerkList from './CardPerkList';
 import { CardDataTypes } from './Pricing';
 import styles from './PricingCard.module.scss';
@@ -10,6 +10,7 @@ interface PricingCardProps {
 
 const PricingCard: React.FC<PricingCardProps> = (props) => {
   const { type, priceCents, saleCents, language, flagUri } = props.data;
+  const langUpperCase = firstLetterUppercase(language);
 
   return (
     <li
@@ -20,8 +21,8 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     >
       <div>
         <h3 className={styles.cardHeader}>
-          <Image src={flagUri} height={50} width={100} />
-          {type === 'free' ? 'Free' : language}
+          <img src={flagUri} alt={language + ' flag'} />
+          {type === 'free' ? 'Free' : "Pro"}
         </h3>
       </div>
       <h4 className={styles.cardPrice}>
@@ -37,15 +38,13 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
             styles.requestReviewBtn,
           ].join(' ')}
         >
-          Request Review
+          Request <span>{langUpperCase}</span> Review
         </a>
       </Link>
-      <CardPerkList type={type} />
-      <div className={type !== 'free' && styles.cardLine}></div>
+      <CardPerkList type={type} lang={langUpperCase}/>
+      <div className={type !== 'free' ? styles.cardLine : undefined}></div>
     </li>
   );
 };
 
 export default PricingCard;
-
-// TODO: helper function for first letter to uppercase

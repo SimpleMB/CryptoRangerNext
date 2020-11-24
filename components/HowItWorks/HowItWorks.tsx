@@ -30,7 +30,7 @@ const howItWorksData: howItWorksPointData[] = [
 
 const HowItWorks: React.FC = () => {
   const howItWorksPointList = howItWorksData.map((point) => (
-    <li>
+    <li key={point.id}>
       <HowItWorksPoint
         id={point.id}
         title={point.title}
@@ -41,9 +41,7 @@ const HowItWorks: React.FC = () => {
   return (
     <section className={styles.hiw} id="howitworks">
       <h3 className={styles.hiwHeader}>How it works</h3>
-      <ul className={styles.hiwList}>
-        {howItWorksPointList}
-      </ul>
+      <ul className={styles.hiwList}>{howItWorksPointList}</ul>
     </section>
   );
 };

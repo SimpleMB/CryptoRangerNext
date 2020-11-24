@@ -3,11 +3,14 @@ import { CardDataTypes } from './Pricing';
 
 interface CardPerkListProps {
   type: CardDataTypes['type'];
+  lang: 'Polish' | 'English';
 }
 
 const CardPerkList: React.FC<CardPerkListProps> = (props) => {
+  const { type, lang } = props;
+
   const freePerks = (
-    <ul  className={styles.perkList}>
+    <ul className={styles.perkList}>
       <li className={styles.perkListItem}>
         <p>
           <img src="/images/perkDotFree.svg" alt="perk dot" /> Review ready in 7
@@ -19,6 +22,12 @@ const CardPerkList: React.FC<CardPerkListProps> = (props) => {
 
   const paidPerks = (
     <ul className={styles.perkList}>
+      <li className={styles.perkListItem}>
+        <p>
+          <img src="/images/perkDot.svg" alt="perk dot" />
+          Review in <span>{lang}</span> language
+        </p>
+      </li>
       <li className={styles.perkListItem}>
         <p>
           <img src="/images/perkDot.svg" alt="perk dot" />
@@ -46,7 +55,7 @@ const CardPerkList: React.FC<CardPerkListProps> = (props) => {
     </ul>
   );
 
-  return props.type === 'free' ? freePerks : paidPerks;
+  return type === 'free' ? freePerks : paidPerks;
 };
 
 export default CardPerkList;
