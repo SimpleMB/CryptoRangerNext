@@ -1,0 +1,44 @@
+.pricingFeatures {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.pricingFeaturesHeader {
+  padding: 100px 0 50px;
+  font-size: 24px;
+  font-weight: 900;
+  color: hsla(6, 85, 73, 100%);
+  text-align: center;
+}
+
+.perkList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+  list-style: none;
+  color: hsla(0, 0, 40, 100%);
+}
+
+.perkListItem {
+  padding: 20px 20px 20px 70px;
+  border: 1px solid hsla(0, 0, 90, 100%);
+  border-radius: 20px;
+}
+
+.perkTitle {
+  padding-bottom: 10px;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: -35px;
+    padding-right: 10px;
+  }
+  span {
+    font-weight: 900;
+  }
+}
+
+.perkDescription {
+}

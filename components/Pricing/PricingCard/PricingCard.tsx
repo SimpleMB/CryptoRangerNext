@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import firstLetterUppercase from '../../utils/firstLetterUppercase';
-import CardPerkList from './CardPerkList';
-import { CardDataTypes } from './Pricing';
+import firstLetterUppercase from '../../../utils/firstLetterUppercase';
+import CardPerkList from '../CardPerkList/CardPerkList';
+import { CardDataTypes } from '../Pricing';
 import styles from './PricingCard.module.scss';
 
 interface PricingCardProps {
@@ -41,7 +41,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
           Request <span>{langUpperCase}</span> Review
         </a>
       </Link>
-      <CardPerkList type={type} lang={langUpperCase}/>
+      <CardPerkList type={type} lang={langUpperCase} />
       <div className={type !== 'free' ? styles.cardLine : undefined}></div>
     </li>
   );

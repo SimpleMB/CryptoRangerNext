@@ -1,5 +1,6 @@
 import styles from './Pricing.module.scss';
-import PricingCard from './PricingCard';
+import PricingCard from './PricingCard/PricingCard';
+import PricingFeatures from './PricingFeatures/PricingFeatures';
 
 export interface PerksData {
   id: number;
@@ -51,6 +52,7 @@ const Pricing = () => {
     <section className={styles.pricing} id="pricing">
       <h3 className={styles.pricingHeader}>Pricing</h3>
       <ul className={styles.pricingList}>{pricingList}</ul>
+      <PricingFeatures />
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import styles from './CardPerkList.module.scss';
-import { CardDataTypes } from './Pricing';
+import { CardDataTypes } from '../Pricing';
 
 interface CardPerkListProps {
   type: CardDataTypes['type'];
