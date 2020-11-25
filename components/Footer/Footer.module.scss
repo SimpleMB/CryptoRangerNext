@@ -1,7 +1,33 @@
+.footerWrapper {
+  background-color: hsla(216, 46, 23, 100%);
+}
+
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  max-width: 1500px;
   height: 250px;
-  background-color: hsla(216, 46, 23, 100%);
+  margin: 0 auto;
+}
+
+.footerLinksWrapper {
+  display: flex;
+}
+
+.footerLinks {
+  list-style: none;
+  color: hsla(0, 0, 70, 100%);
+  padding-left: 120px;
+  font-size: 14px;
+
+  
+  h3 {
+    margin-bottom: 14px;
+    color: hsla(0, 0, 90, 100%);
+  }
+
+  li {
+    margin-bottom: 7px;
+  }
 }
