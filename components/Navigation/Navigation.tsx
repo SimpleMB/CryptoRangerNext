@@ -1,11 +1,10 @@
 import Link from "next/link"
-import Logo from "../Logo/Logo"
 import styles from "./Navigation.module.scss"
 
 const Navigation: React.FC = () => {
   return (
     <nav className={styles.navigation}>
-      <Logo width={125} height={60}/>
+      <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign"/>
       <ul className={styles.navList}>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>

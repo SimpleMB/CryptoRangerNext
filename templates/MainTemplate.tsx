@@ -1,5 +1,6 @@
 import About from "../components/About/About"
 import Clients from "../components/Clients/Clients"
+import Footer from "../components/Footer/Footer"
 import HeadIndex from "../components/HeadIndex/Head"
 import Hero from "../components/Hero/Hero"
 import HowItWorks from "../components/HowItWorks/HowItWorks"
@@ -21,6 +22,7 @@ const MainTemplate: React.FC = () => {
       <HowItWorks />
       <SectionDivider side='right'/>
       <Pricing />
+      <Footer />
     </>
   );
 }
