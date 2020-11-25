@@ -43,6 +43,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
       </Link>
       <CardPerkList type={type} lang={langUpperCase} />
       <div className={type !== 'free' ? styles.cardLine : undefined}></div>
+      <p className={type === 'free' ? styles.cardDisclaimer : styles.hidden}>* This period may be extended due of high demand for Pro Reviews</p>
     </li>
   );
 };

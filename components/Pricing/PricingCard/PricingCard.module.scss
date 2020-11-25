@@ -6,13 +6,14 @@
   height: 600px;
   padding: 50px 50px;
   border-radius: 20px;
+  position: relative;
 }
 
 .freeCard {
   background-color: hsla(0, 0, 95, 100%);
 }
 .paidCard {
-  background-color: hsla(209, 45, 55, 100%);
+  background-color: hsla(209, 45, 20, 100%);
   color:hsla(0, 0, 100, 100%);
 }
 
@@ -55,7 +56,7 @@
   border-radius: 30px;
   text-decoration: none;
   color: hsla(209, 45, 14, 100%);
-
+  
   span {
     font-weight: 900;
   }
@@ -67,6 +68,7 @@
 }
 
 .requestReviewBtnPaid {
+  color: hsla(209, 45, 100, 100%);
   background-color: hsla(6, 85, 73, 100%);
 }
 
@@ -80,4 +82,14 @@
   width: 240px;
   height: 1px;
   background-color: hsla(6, 85, 73, 100%);
+}
+
+.cardDisclaimer {
+  position: absolute;
+  bottom: 20px;
+  font-size: 10px;
+}
+
+.hidden {
+  display: none;
 }
