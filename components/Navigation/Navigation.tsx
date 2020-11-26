@@ -18,6 +18,4 @@ const Navigation: React.FC = () => {
 
 export default Navigation;
 
-// TODO : try encapsulate Logo element with <div> and don't provide dimensions
-
 // TODO : animations when away from top

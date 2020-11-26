@@ -20,7 +20,7 @@ const MainTemplate: React.FC = () => {
       <Clients />
       <SectionDivider side='right'/>
       <HowItWorks />
-      <SectionDivider side='right'/>
+      <SectionDivider side='left'/>
       <Pricing />
       <Footer />
     </>

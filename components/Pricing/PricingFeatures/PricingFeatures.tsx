@@ -14,7 +14,7 @@ const PricingFeatures = () => {
             Review ready in <span>48h</span>
           </p>
           <p className={styles.perkDescription}>
-            We guarantee that your review will be ready for your approval in 48
+            We guarantee that review will be ready for your approval in 48
             hours from receiving payment.
           </p>
         </li>
@@ -34,9 +34,9 @@ const PricingFeatures = () => {
             <span>Publishing</span> approval
           </p>
           <p className={styles.perkDescription}>
-            Before your review will go live, we will send you private link to
+            Before your review will go live, we will send you a private link to
             the video for your consideration. If something is wrong, you can
-            easily cancel publication.
+            easily cancel/postpone publication.
           </p>
         </li>
         <li className={styles.perkListItem}>

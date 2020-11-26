@@ -48,6 +48,7 @@ const Pricing = () => {
   const pricingList = pricingCardsData.map((card) => (
     <PricingCard data={card} key={card.id} />
   ));
+
   return (
     <section className={styles.pricing} id="pricing">
       <h3 className={styles.pricingHeader}>Pricing</h3>
@@ -58,5 +59,3 @@ const Pricing = () => {
 };
 
 export default Pricing;
-
-// TODO Additional features info box
