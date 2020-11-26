@@ -1,6 +1,6 @@
 .hero {
   display: flex;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 200px);
   max-width: 1500px;
   margin: 0 auto;
 }
@@ -9,11 +9,12 @@
 .sectionRight {
   justify-self: center;
   align-self: center;
-  width: 45%;
+  width: 40%;
+  // position: relative;
 }
 
 .sectionLeft {
-  padding: 70px;
+  padding: 54px;
 
   .heroHeader {
     font-size: 68px;
@@ -22,13 +23,13 @@
     color: hsla(209, 61, 43, 100%);
 
     span {
-      font-size: 80px;
-      font-size: calc(3vw + 30px);
+      font-size: 72px;
+      // font-size: calc(3vw + 30px);
       color: hsla(43, 100, 44, 100%);
     }
   }
 }
 
 .sectionRight {
-  width: 55%;
+  width: 60%;
 }
