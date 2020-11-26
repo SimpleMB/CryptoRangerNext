@@ -29,7 +29,7 @@ const pricingCardsData: CardDataTypes[] = [
   {
     id: 1,
     type: 'paid',
-    priceCents: 15000,
+    priceCents: 14900,
     saleCents: 5000,
     language: 'english',
     flagUri: '/images/gbFlag.svg',
@@ -37,7 +37,7 @@ const pricingCardsData: CardDataTypes[] = [
   {
     id: 2,
     type: 'paid',
-    priceCents: 15000,
+    priceCents: 9900,
     saleCents: 5000,
     language: 'polish',
     flagUri: '/images/plFlag.svg',
