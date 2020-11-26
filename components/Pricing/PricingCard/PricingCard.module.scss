@@ -7,6 +7,11 @@
   padding: 50px 50px;
   border-radius: 20px;
   position: relative;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 20px rgb(50, 92, 131);
+  }
 }
 
 .freeCard {
@@ -14,7 +19,7 @@
 }
 .paidCard {
   background-color: hsla(209, 45, 20, 100%);
-  color:hsla(0, 0, 100, 100%);
+  color: hsla(0, 0, 100, 100%);
 }
 
 .cardHeader,
@@ -56,15 +61,18 @@
   border-radius: 30px;
   text-decoration: none;
   color: hsla(209, 45, 14, 100%);
-  
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.03);
+  }
   span {
     font-weight: 900;
   }
 }
 
 .requestReviewBtnFree {
-  background-color:  hsla(0, 0, 100, 100%);;
-  border: 1px solid  hsla(0, 0, 80, 100%);;
+  background-color: hsla(0, 0, 100, 100%);
+  border: 1px solid hsla(0, 0, 80, 100%);
 }
 
 .requestReviewBtnPaid {
