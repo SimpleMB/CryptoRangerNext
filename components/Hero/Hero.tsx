@@ -10,7 +10,7 @@ const Hero = () => {
         </h1>
       </section>
       <section className={styles.sectionRight}>
-        <Image src='/images/headerImage.svg' width={900} height={650}/>
+        <Image src='/images/headerImageCrypto.svg' width={900} height={650}/>
       </section>
     </div>
   );
