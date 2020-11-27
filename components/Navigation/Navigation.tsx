@@ -2,8 +2,8 @@ import Link from 'next/link';
 import styles from './Navigation.module.scss';
 
 const Navigation: React.FC = () => {
-  const scrollToId = (e: any) => {
-    const destinationId = e.target.dataset.href;
+  const scrollToId = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const destinationId = e.currentTarget.getAttribute('data-href');
     const desctinationElement = document.querySelector(destinationId);
     desctinationElement.scrollIntoView({ behavior: 'smooth' });
   };
@@ -17,13 +17,19 @@ const Navigation: React.FC = () => {
           </a>
         </li>
         <li>
-          <a data-href="#about" onClick={scrollToId}>About</a>
+          <a data-href="#about" onClick={scrollToId}>
+            About
+          </a>
         </li>
         <li>
-          <a data-href="#clients" onClick={scrollToId}>Clients</a>
+          <a data-href="#clients" onClick={scrollToId}>
+            Clients
+          </a>
         </li>
         <li>
-          <a data-href="#pricing" onClick={scrollToId}>Pricing</a>
+          <a data-href="#pricing" onClick={scrollToId}>
+            Pricing
+          </a>
         </li>
       </ul>
       <Link href="">
