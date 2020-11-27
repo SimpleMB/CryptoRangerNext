@@ -1,20 +1,37 @@
-import Link from "next/link"
-import styles from "./Navigation.module.scss"
+import Link from 'next/link';
+import styles from './Navigation.module.scss';
 
 const Navigation: React.FC = () => {
+  const scrollToId = (e: any) => {
+    const destinationId = e.target.dataset.href;
+    const desctinationElement = document.querySelector(destinationId);
+    desctinationElement.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <nav className={styles.navigation}>
-      <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign"/>
+      <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" />
       <ul className={styles.navList}>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#clients">Clients</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li>
+          <a data-href="#home" onClick={scrollToId}>
+            Home
+          </a>
+        </li>
+        <li>
+          <a data-href="#about" onClick={scrollToId}>About</a>
+        </li>
+        <li>
+          <a data-href="#clients" onClick={scrollToId}>Clients</a>
+        </li>
+        <li>
+          <a data-href="#pricing" onClick={scrollToId}>Pricing</a>
+        </li>
       </ul>
-      <Link href=''><a className={styles.reviewBtn}>Get review</a></Link>
+      <Link href="">
+        <a className={styles.reviewBtn}>Get review</a>
+      </Link>
     </nav>
   );
-}
+};
 
 export default Navigation;
 

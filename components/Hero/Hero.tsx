@@ -1,19 +1,19 @@
-import Image from 'next/image'
-import styles from './Hero.module.scss'
+import Image from 'next/image';
+import styles from './Hero.module.scss';
 
 const Hero = () => {
   return (
-    <div className={styles.hero}>
+    <div className={styles.hero} id="home">
       <section className={styles.sectionLeft}>
         <h1 className={styles.heroHeader}>
-        Social Media <span>Advertising</span> for Blockchain Industry
+          Social Media <span>Advertising</span> for Blockchain Industry
         </h1>
       </section>
       <section className={styles.sectionRight}>
-        <Image src='/images/headerImageCrypto.svg' width={900} height={650}/>
+        <Image src="/images/headerImageCrypto.svg" width={900} height={650} />
       </section>
     </div>
   );
-}
+};
 
 export default Hero;
