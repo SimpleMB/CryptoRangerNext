@@ -17,7 +17,7 @@ const Navigation: React.FC = () => {
           </a>
         </li>
         <li>
-          <a data-href="#about" onClick={scrollToId}>
+          <a data-href="#about" onClick={scrollToId} data-active>
             About
           </a>
         </li>

@@ -20,8 +20,20 @@
   width: calc(100vw / 3);
 
   a {
+    display: block;
+    padding: 5px 10px;
+    text-align: center;
     text-decoration: none;
     color: hsla(0, 0, 34, 100%);
+    width: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+
+  a:hover {
+    background-color: hsla(43, 100, 60, 100%);
+    color: hsla(43, 100, 100, 100%);
   }
 }
 

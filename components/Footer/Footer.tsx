@@ -12,16 +12,16 @@ const Footer = () => {
           <ul className={styles.footerLinks}>
             <h3>Information</h3>
             <li>About Us</li>
-            <li>More Search</li>
             <li>Testimonials</li>
             <li>Services</li>
+            <li>Attributions</li>
           </ul>
           <ul className={styles.footerLinks}>
-            <h3>Helpful Links</h3>
-            <li>Services</li>
-            <li>Support</li>
-            <li>Terms & Conditions</li>
-            <li>Privacy Policy</li>
+            <h3>Channel Links</h3>
+            <li>Latest reviews</li>
+            <li>Popular reviews</li>
+            <li>ICO's</li>
+            <li>Tutorials</li>
           </ul>
           <ul className={styles.footerLinks}>
             <h3>Follow</h3>
