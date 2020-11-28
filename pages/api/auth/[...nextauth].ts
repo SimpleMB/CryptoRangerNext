@@ -31,6 +31,9 @@ const options = {
       }
     })
   ],
+  pages: {
+    signIn: '/auth/signin',
+  }
 }
 
 export default (req, res) => NextAuth(req, res, options)

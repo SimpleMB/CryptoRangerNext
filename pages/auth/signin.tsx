@@ -6,7 +6,7 @@ export default function SignIn({ csrfToken }) {
     <form method="post" action="/api/auth/callback/credentials">
       <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
       <label>
-        Username
+        Yoyoyoyoy
         <input name="username" type="text" />
       </label>
       <label>

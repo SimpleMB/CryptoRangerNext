@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/client';
 import Link from 'next/link';
 import styles from './Navigation.module.scss';
 
@@ -32,6 +33,7 @@ const Navigation: React.FC = () => {
           </a>
         </li>
       </ul>
+      <button onClick={signIn}>hello</button>
       <Link href="">
         <a className={styles.reviewBtn}>Get review</a>
       </Link>
