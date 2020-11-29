@@ -9,7 +9,7 @@ const Navigation: React.FC = () => {
     desctinationElement.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <nav className={styles.navigation}>
+    <nav className={styles.navigation} onClick={() => console.log('ewrwer')}>
       <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" />
       <ul className={styles.navList}>
         <li>
@@ -33,7 +33,11 @@ const Navigation: React.FC = () => {
           </a>
         </li>
       </ul>
-      <button onClick={signIn}>hello</button>
+      <button
+        onClick={() => signIn()}
+      >
+        hello
+      </button>
       <Link href="">
         <a className={styles.reviewBtn}>Get review</a>
       </Link>

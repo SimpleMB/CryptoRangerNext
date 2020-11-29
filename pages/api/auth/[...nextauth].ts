@@ -1,5 +1,5 @@
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
 
 const options = {
   // Configure one or more authentication providers
@@ -11,8 +11,8 @@ const options = {
       // You can specify whatever fields you are expecting to be submitted.
       // e.g. domain, username, password, 2FA token, etc.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: {  label: "Password", type: "password" }
+        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+        password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
         const user = (credentials) => {
@@ -20,20 +20,21 @@ const options = {
           // submitted and returns either a object representing a user or value
           // that is false/null if the credentials are invalid.
           // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-          return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        }
+          console.log(credentials);
+          return { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
+        };
         if (user) {
           // Any user object returned here will be saved in the JSON Web Token
-          return Promise.resolve(user)
+          return Promise.resolve(user);
         } else {
-          return Promise.resolve(null)
+          return Promise.resolve(null);
         }
-      }
-    })
+      },
+    }),
   ],
   pages: {
     signIn: '/auth/signin',
-  }
-}
+  },
+};
 
-export default (req, res) => NextAuth(req, res, options)
+export default (req, res) => NextAuth(req, res, options);
