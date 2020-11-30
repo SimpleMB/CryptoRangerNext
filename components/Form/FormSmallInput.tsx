@@ -19,8 +19,9 @@ const FormSmallInput: React.FC<InputProps> = ({
   name,
   register,
   required,
-  defaultValue,
+  value,
 }) => {
+  console.log(value);
   return (
     <>
       <label>{label}</label>
@@ -28,7 +29,7 @@ const FormSmallInput: React.FC<InputProps> = ({
         type={type}
         name={name}
         ref={register({ required })}
-        defaultValue={defaultValue}
+        defaultValue={value}
         required={required}
       />
     </>

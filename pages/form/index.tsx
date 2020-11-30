@@ -9,6 +9,7 @@ enum InputType {
 }
 
 interface InputProps {
+  id: string;
   name: string;
   label: string;
   value: string;
@@ -18,26 +19,18 @@ interface InputProps {
 }
 
 interface FormProps {
-  projectName: string;
-  projectWeb: string;
-  whenProjectStarts: string;
-  coreConcept: string;
-}
-
-interface FormProp {
   form: InputProps[];
 }
 
-const Form: React.FC<FormProp> = ({ form }) => {
-  const { register, handleSubmit, watch, errors } = useForm<FormProp>();
-  const onSubmit = (data: FormProp) => console.log(data);
+const Form: React.FC<FormProps> = ({ form }) => {
+  const { register, handleSubmit, watch, errors } = useForm<FormProps>();
+  const onSubmit = (data: FormProps) => console.log(data);
 
   const inputList = form.map((input, index) => {
-    if (input.type === 'small')
+    if (input.type === 'small' || input.type === 'date')
       return <FormSmallInput key={index} {...input} register={register} />;
     if (input.type === 'big')
       return <FormBigInput {...input} key={index} register={register} />;
-    if (input.type === 'date') return null;
   });
 
   return (
@@ -54,7 +47,7 @@ export async function getServerSideProps() {
     props: {
       form: [
         {
-          id: 0,
+          id: 'projectName',
           name: 'projectName',
           label: "Project's Name",
           value: 'P name',
@@ -62,7 +55,7 @@ export async function getServerSideProps() {
           required: true,
         },
         {
-          id: 1,
+          id: 'projectWeb',
           name: 'projectWeb',
           label: "Project's website",
           value: 'www.awesomeproject.com',
@@ -70,7 +63,7 @@ export async function getServerSideProps() {
           required: true,
         },
         {
-          id: 2,
+          id: 'projectStart',
           name: 'projectStart',
           label: 'When project starts',
           value: '2020-12-01',
@@ -78,7 +71,7 @@ export async function getServerSideProps() {
           required: true,
         },
         {
-          id: 3,
+          id: 'coreConcept',
           name: 'coreConcept',
           label: 'Core concept of the project',
           value: 'some legit shit...',
