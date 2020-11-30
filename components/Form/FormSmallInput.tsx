@@ -1,5 +1,3 @@
-import { Ref } from 'react';
-
 type RefReturn =
   | string
   | ((instance: HTMLInputElement | null) => void)
@@ -17,6 +15,7 @@ type InputProps = React.DetailedHTMLProps<
 
 const FormSmallInput: React.FC<InputProps> = ({
   label,
+  type,
   name,
   register,
   required,
@@ -25,7 +24,13 @@ const FormSmallInput: React.FC<InputProps> = ({
   return (
     <>
       <label>{label}</label>
-      <input name={name} ref={register({ required })} defaultValue={defaultValue}/>
+      <input
+        type={type}
+        name={name}
+        ref={register({ required })}
+        defaultValue={defaultValue}
+        required={required}
+      />
     </>
   );
 };
