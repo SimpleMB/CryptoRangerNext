@@ -13,7 +13,7 @@ type InputProps = React.DetailedHTMLProps<
   register: ({ required }: { required?: boolean }) => RefReturn;
 };
 
-const FormSmallInput: React.FC<InputProps> = ({
+const FormBigInput: React.FC<InputProps> = ({
   label,
   name,
   register,
@@ -35,4 +35,4 @@ const FormSmallInput: React.FC<InputProps> = ({
   );
 };
 
-export default FormSmallInput;
+export default FormBigInput;

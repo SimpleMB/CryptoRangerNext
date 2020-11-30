@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
 
 interface InputProps {
@@ -34,11 +35,12 @@ const Form: React.FC<InputProps> = (props) => {
         ref={register}
         defaultValue={props.whenProjectStarts}
       />
-      <input
-        type="text"
+      <FormBigInput
+        label="Core concept"
         name="coreConcept"
-        ref={register}
+        register={register}
         defaultValue={props.coreConcept}
+        rows={5}
       />
       <input type="submit" />
     </form>
