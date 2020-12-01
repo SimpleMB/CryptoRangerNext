@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
+import styles from './Form.module.scss';
 
 enum InputType {
   big = 'big',
@@ -19,14 +20,14 @@ interface InputProps {
 }
 
 interface FormProps {
-  form: InputProps[];
+  formFields: InputProps[];
 }
 
-const Form: React.FC<FormProps> = ({ form }) => {
+const Form: React.FC<FormProps> = ({ formFields }) => {
   const { register, handleSubmit, watch, errors } = useForm<FormProps>();
   const onSubmit = (data: FormProps) => console.log(data);
 
-  const inputList = form.map((input, index) => {
+  const inputList = formFields.map((input, index) => {
     if (input.type === 'small' || input.type === 'date')
       return <FormSmallInput key={index} {...input} register={register} />;
     if (input.type === 'big')
@@ -34,7 +35,7 @@ const Form: React.FC<FormProps> = ({ form }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       {inputList}
       <input type="submit" />
     </form>
@@ -45,7 +46,7 @@ export async function getServerSideProps() {
   // Fetch initial data for the form props
   return {
     props: {
-      form: [
+      formFields: [
         {
           id: 'projectName',
           name: 'projectName',
@@ -76,7 +77,7 @@ export async function getServerSideProps() {
           label: 'Core concept of the project',
           value: 'some legit shit...',
           type: 'big',
-          rows: 3,
+          rows: 4,
           required: true,
         },
       ],

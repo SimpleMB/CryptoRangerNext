@@ -1,3 +1,5 @@
+import styles from './FormBigInput.module.scss';
+
 type RefReturn =
   | string
   | ((instance: HTMLTextAreaElement | null) => void)
@@ -22,16 +24,17 @@ const FormBigInput: React.FC<InputProps> = ({
   rows,
 }) => {
   return (
-    <>
-      <label>{label}</label>
+    <div className={styles.bigInput}>
+      <label className={styles.bigInputLabel}>{label}</label>
       <textarea
+        className={styles.bigInputField}
         name={name}
         ref={register({ required })}
         defaultValue={defaultValue}
         required={required}
         rows={rows || 5}
       />
-    </>
+    </div>
   );
 };
 

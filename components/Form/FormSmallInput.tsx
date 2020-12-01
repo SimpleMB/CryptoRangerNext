@@ -1,3 +1,5 @@
+import styles from './FormSmallInput.module.scss';
+
 type RefReturn =
   | string
   | ((instance: HTMLInputElement | null) => void)
@@ -23,16 +25,17 @@ const FormSmallInput: React.FC<InputProps> = ({
 }) => {
   console.log(value);
   return (
-    <>
-      <label>{label}</label>
+    <div className={[styles.smallInput, type === 'date' && styles.smallInputDate].join(' ')}>
+      <label className={styles.smallInputLabel}>{label}</label>
       <input
+        className={styles.smallInputField}
         type={type}
         name={name}
         ref={register({ required })}
         defaultValue={value}
         required={required}
       />
-    </>
+    </div>
   );
 };
 

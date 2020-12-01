@@ -1,0 +1,28 @@
+.smallInput {
+  width: 500px;
+  margin-bottom: 40px;
+}
+
+.smallInputDate {
+  width: 250px;
+}
+
+.smallInputLabel {
+  display: block;
+  padding-left: 7px;
+  font-size: 12px;
+  color: hsla(0, 0, 60, 100%)
+}
+
+.smallInputField {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid hsla(0, 0, 90, 100%);
+  font-size: 14px;
+  color: hsla(0, 0, 50, 100%);
+
+  ::placeholder {
+    color: hsla(0, 0, 85, 100%);
+  }
+}
