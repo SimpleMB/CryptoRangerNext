@@ -23,7 +23,6 @@ const FormSmallInput: React.FC<InputProps> = ({
   required,
   value,
 }) => {
-  console.log(value);
   return (
     <div className={[styles.smallInput, type === 'date' && styles.smallInputDate].join(' ')}>
       <label className={styles.smallInputLabel}>{label}</label>

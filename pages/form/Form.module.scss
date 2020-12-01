@@ -1,8 +1,14 @@
 .form {
   display: flex;
   flex-direction: column;
-  margin: 200px auto;
+  margin: 100px auto 200px;
   max-width: 1000px;
+}
+
+.formLogo {
+  align-self: flex-start;
+  height: 120px;
+  margin-bottom: 100px;
 }
 
 .formSubmitBtn {

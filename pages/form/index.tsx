@@ -7,6 +7,7 @@ enum InputType {
   big = 'big',
   small = 'small',
   date = 'date',
+  links = 'links',
 }
 
 interface InputProps {
@@ -36,6 +37,7 @@ const Form: React.FC<FormProps> = ({ formFields }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" className={styles.formLogo}/>
       {inputList}
       <input
         type="submit"
@@ -81,7 +83,7 @@ export async function getServerSideProps() {
           label: 'Core concept of the project:',
           value: '',
           type: 'big',
-          rows: 4,
+          rows: 10,
           required: false,
         },
         {
