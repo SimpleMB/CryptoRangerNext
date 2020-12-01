@@ -4,3 +4,15 @@
   margin: 0 auto;
   max-width: 1000px;
 }
+
+.formSubmitBtn {
+  width: 300px;
+  padding: 20px 20px;
+  background-color: hsla(211, 51, 50, 100%);
+  border: none;
+  border-radius: 10px;
+  color: hsla(0, 0, 100, 100%);
+  font-size: 18px;
+  font-weight: 900;
+  align-self: flex-end;
+}
