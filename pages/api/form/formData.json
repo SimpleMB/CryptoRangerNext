@@ -4,7 +4,7 @@
       "id": "projectName",
       "name": "projectName",
       "label": "Project's name:",
-      "value": "hello",
+      "value": "",
       "type": "small",
       "required": true
     },
