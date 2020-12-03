@@ -20,7 +20,7 @@
       "id": "projectStart",
       "name": "projectStart",
       "label": "When project starts:",
-      "value": "",
+      "value": "2021-12-03",
       "type": "date",
       "required": true
     },
