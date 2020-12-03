@@ -7,9 +7,10 @@ type RefReturn =
   | null
   | undefined;
 
+// eslint-disable-next-line
 type InputProps = React.DetailedHTMLProps<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>, // eslint-disable-line
+  HTMLTextAreaElement // eslint-disable-line
 > & {
   label: string;
   register: ({ required }: { required?: boolean }) => RefReturn;
@@ -25,8 +26,11 @@ const FormBigInput: React.FC<InputProps> = ({
 }) => {
   return (
     <div className={styles.bigInput}>
-      <label className={styles.bigInputLabel}>{label}</label>
+      <label className={styles.bigInputLabel} htmlFor={name}>
+        {label}
+      </label>
       <textarea
+        id={name}
         className={styles.bigInputField}
         name={name}
         ref={register({ required })}

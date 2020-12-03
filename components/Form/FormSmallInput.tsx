@@ -8,8 +8,8 @@ type RefReturn =
   | undefined;
 
 type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
+  React.InputHTMLAttributes<HTMLInputElement>, // eslint-disable-line
+  HTMLInputElement // eslint-disable-line
 > & {
   label: string;
   register: ({ required }: { required?: boolean }) => RefReturn;
@@ -24,9 +24,17 @@ const FormSmallInput: React.FC<InputProps> = ({
   value,
 }) => {
   return (
-    <div className={[styles.smallInput, type === 'date' && styles.smallInputDate].join(' ')}>
-      <label className={styles.smallInputLabel}>{label}</label>
+    <div
+      className={[
+        styles.smallInput,
+        type === 'date' && styles.smallInputDate,
+      ].join(' ')}
+    >
+      <label className={styles.smallInputLabel} htmlFor={name}>
+        {label}
+      </label>
       <input
+        id={name}
         className={styles.smallInputField}
         type={type}
         name={name}

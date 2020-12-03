@@ -1,13 +1,13 @@
 import styles from './HowItWorks.module.scss';
 import HowItWorksPoint from './HowItWorksPoint';
 
-interface howItWorksPointData {
+interface HowItWorksPointData {
   id: number;
   title: string;
   description: string;
 }
 
-const howItWorksData: howItWorksPointData[] = [
+const howItWorksData: HowItWorksPointData[] = [
   {
     id: 1,
     title: 'Sign up',

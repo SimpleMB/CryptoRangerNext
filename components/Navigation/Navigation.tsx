@@ -9,42 +9,42 @@ const Navigation: React.FC = () => {
     desctinationElement.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <nav className={styles.navigation} onClick={() => console.log('ewrwer')}>
+    <nav className={styles.navigation}>
       <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" />
       <ul className={styles.navList}>
         <li>
-          <a data-href="#home" onClick={scrollToId}>
+          <a data-href="#home" onClick={scrollToId} href="">
             Home
           </a>
         </li>
         <li>
-          <a data-href="#about" onClick={scrollToId} data-active>
+          <a data-href="#about" onClick={scrollToId} data-active href="">
             About
           </a>
         </li>
         <li>
-          <a data-href="#clients" onClick={scrollToId}>
+          <a data-href="#clients" onClick={scrollToId} href="">
             Clients
           </a>
         </li>
         <li>
-          <a data-href="#pricing" onClick={scrollToId}>
+          <a data-href="#pricing" onClick={scrollToId} href="">
             Pricing
           </a>
         </li>
       </ul>
-      <button
-        onClick={() => signIn()}
-      >
+      <button type="button" onClick={() => signIn()}>
         hello
       </button>
       <Link href="">
-        <a className={styles.reviewBtn}>Get review</a>
+        <a className={styles.reviewBtn} href="">
+          Get review
+        </a>
       </Link>
     </nav>
   );
 };
 
 export default Navigation;
-
+// TODO: fix a to buttons coz a11y
 // TODO : animations when away from top
