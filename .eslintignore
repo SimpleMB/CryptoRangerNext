@@ -1,0 +1,6 @@
+.next/*
+public/*
+next-env.d.ts
+*.json
+*.scss
+*.css
