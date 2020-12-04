@@ -1,9 +1,16 @@
 import Link from 'next/link';
 import firstLetterUppercase from '../../../utils/firstLetterUppercase';
 import CardPerkList from '../CardPerkList/CardPerkList';
-import { CardDataTypes } from '../Pricing';
 import styles from './PricingCard.module.scss';
 
+interface CardDataTypes {
+  id: number;
+  type: 'free' | 'paid';
+  priceCents: number;
+  saleCents: number;
+  language: 'polish' | 'english' | 'german' | 'russian';
+  flagUri: string;
+}
 interface PricingCardProps {
   data: CardDataTypes;
 }
@@ -21,7 +28,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     >
       <div>
         <h3 className={styles.cardHeader}>
-          <img src={flagUri} alt={language + ' flag'} />
+          <img src={flagUri} alt={`${language} flag`} />
           {type === 'free' ? 'Free' : langUpperCase}
         </h3>
       </div>
@@ -29,7 +36,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
         <span>$</span>
         {priceCents / 100}
       </h4>
-      <Link href="">
+      <Link href="/form">
         <a
           className={[
             type === 'free'
@@ -42,8 +49,10 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
         </a>
       </Link>
       <CardPerkList type={type} lang={langUpperCase} />
-      <div className={type !== 'free' ? styles.cardLine : undefined}></div>
-      <p className={type === 'free' ? styles.cardDisclaimer : styles.hidden}>* This period may be extended due to high demand for Pro Reviews</p>
+      <div className={type !== 'free' ? styles.cardLine : undefined} />
+      <p className={type === 'free' ? styles.cardDisclaimer : styles.hidden}>
+        * This period may be extended due to high demand for Pro Reviews
+      </p>
     </li>
   );
 };

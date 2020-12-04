@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './Navigation.module.scss';
 
 const Navigation: React.FC = () => {
-  const scrollToId = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToId = (e: React.MouseEvent<HTMLButtonElement>) => {
     const destinationId = e.currentTarget.getAttribute('data-href');
     const desctinationElement = document.querySelector(destinationId);
     desctinationElement.scrollIntoView({ behavior: 'smooth' });
@@ -13,33 +13,38 @@ const Navigation: React.FC = () => {
       <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" />
       <ul className={styles.navList}>
         <li>
-          <a data-href="#home" onClick={scrollToId} href="">
+          <button type="button" data-href="#home" onClick={scrollToId}>
             Home
-          </a>
+          </button>
         </li>
         <li>
-          <a data-href="#about" onClick={scrollToId} data-active href="">
+          <button
+            type="button"
+            data-href="#about"
+            onClick={scrollToId}
+            data-active
+          >
             About
-          </a>
+          </button>
         </li>
         <li>
-          <a data-href="#clients" onClick={scrollToId} href="">
+          <button type="button" data-href="#clients" onClick={scrollToId}>
             Clients
-          </a>
+          </button>
         </li>
         <li>
-          <a data-href="#pricing" onClick={scrollToId} href="">
+          <button type="button" data-href="#pricing" onClick={scrollToId}>
             Pricing
-          </a>
+          </button>
         </li>
       </ul>
       <button type="button" onClick={() => signIn()}>
         hello
       </button>
       <Link href="">
-        <a className={styles.reviewBtn} href="">
+        <button type="button" className={styles.reviewBtn}>
           Get review
-        </a>
+        </button>
       </Link>
     </nav>
   );

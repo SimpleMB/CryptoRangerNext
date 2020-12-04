@@ -7,15 +7,14 @@ const PricingFeatures = () => {
         Additional features of PRO review
       </h4>
       <ul className={styles.perkList}>
-        
         <li className={styles.perkListItem}>
           <p className={styles.perkTitle}>
             <img src="/images/perkDotFree.svg" alt="perk dot" />
             Review ready in <span>48h</span>
           </p>
           <p className={styles.perkDescription}>
-            We guarantee that review will be ready for your approval in 48
-            hours from receiving payment.
+            We guarantee that review will be ready for your approval in 48 hours
+            from receiving payment.
           </p>
         </li>
         <li className={styles.perkListItem}>

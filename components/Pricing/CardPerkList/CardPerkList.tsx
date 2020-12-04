@@ -1,5 +1,13 @@
 import styles from './CardPerkList.module.scss';
-import { CardDataTypes } from '../Pricing';
+
+interface CardDataTypes {
+  id: number;
+  type: 'free' | 'paid';
+  priceCents: number;
+  saleCents: number;
+  language: 'polish' | 'english' | 'german' | 'russian';
+  flagUri: string;
+}
 
 interface CardPerkListProps {
   type: CardDataTypes['type'];
