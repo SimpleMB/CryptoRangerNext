@@ -10,3 +10,26 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  pin   String 
+  form Form
+}
+
+model Form {
+  id         Int         @id @default(autoincrement())
+  formFields FormField[]
+}
+
+model FormField {
+  id       Int     @id @default(autoincrement())
+  fieldId  String
+  name     String
+  label    String
+  value    String?
+  type     String
+  required Boolean @default(false)
+  Form     Form?   @relation(fields: [formId], references: [id])
+  formId   Int?
+}
