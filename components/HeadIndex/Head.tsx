@@ -10,8 +10,8 @@ const HeadIndex = () => {
         name="description"
         content="Crypto projects reviews on Youtube and other social media. Request your free review for your blockchain project in different languages. Provide more information and let your future customers know more what your crypto project offer. We review ICO, exchanges, payment gateways and more..."
       />
-
       <meta property="og:image" content="" />
+      dupadfasdfasd
       <meta
         property="og:title"
         content="Crypto Ranger - Best crypto reviews on Social Media"
@@ -21,7 +21,7 @@ const HeadIndex = () => {
         content="Crypto projects reviews on Youtube and other social media. Request your free review for your blockchain project in different languages. Provide more information and let your future customers know more what your crypto project offer. We review ICO, exchanges, payment gateways and more..."
       />
       <meta property="og:type" content="website" />
-
+      dsafjajfhasdfasdfasd
       <meta name="twitter:image" content="" />
       <meta
         name="twitter:title"
