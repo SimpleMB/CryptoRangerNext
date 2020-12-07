@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
@@ -15,7 +16,7 @@ const options = {
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
-        const user = (credentials) => {
+        const user = ({ username, password } = credentials) => {
           // You need to provide your own logic here that takes the credentials
           // submitted and returns either a object representing a user or value
           // that is false/null if the credentials are invalid.
@@ -26,9 +27,8 @@ const options = {
         if (user) {
           // Any user object returned here will be saved in the JSON Web Token
           return Promise.resolve(user);
-        } else {
-          return Promise.resolve(null);
         }
+        return Promise.resolve(null);
       },
     }),
   ],
@@ -37,4 +37,5 @@ const options = {
   },
 };
 
-export default (req, res) => NextAuth(req, res, options);
+export default (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, options);

@@ -1,15 +1,15 @@
 import React from 'react';
-import { csrfToken } from 'next-auth/client';
+import { csrfToken as csrfTokenFunc } from 'next-auth/client';
 
 export default function SignIn({ csrfToken }) {
   return (
     <form method="post" action="/api/auth/callback/credentials">
       <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-      <label>
+      <label htmlFor="username">
         Yoyoyoyoy
         <input name="username" type="text" />
       </label>
-      <label>
+      <label htmlFor="password">
         Password
         <input name="password" type="text" />
       </label>
@@ -20,6 +20,6 @@ export default function SignIn({ csrfToken }) {
 
 SignIn.getInitialProps = async (context) => {
   return {
-    csrfToken: await csrfToken(context),
+    csrfToken: await csrfTokenFunc(context),
   };
 };
