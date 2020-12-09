@@ -6,19 +6,18 @@ import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-type User = { id: number; email: string; pin: string };
-
+type User = { id: number; email: string; pin?: string };
 type FetchUser = (email: string, pin: string) => Promise<User>;
 
 const registerUser: FetchUser = async (email, pin) => {
   const hashedPin = await bcrypt.hash(pin, 8);
   const regUser = await prisma.user.create({
+    select: { id: true, email: true },
     data: {
       email,
       pin: hashedPin,
     },
   });
-  delete regUser.pin;
   return regUser;
 };
 
