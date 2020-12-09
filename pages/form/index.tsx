@@ -1,3 +1,4 @@
+import { GetServerSideProps, NextPage } from 'next';
 import { useForm } from 'react-hook-form';
 import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
@@ -20,13 +21,13 @@ interface InputProps {
   required?: boolean;
 }
 
-interface FormProps {
+interface Props {
   formFields: InputProps[];
 }
 
-const Form: React.FC<FormProps> = ({ formFields }) => {
-  const { register, handleSubmit, watch, errors } = useForm<FormProps>();
-  const onSubmit = (data: FormProps) => console.log(data);
+const Form: NextPage<Props> = ({ formFields }) => {
+  const { register, handleSubmit, watch, errors } = useForm<Props>();
+  const onSubmit = (data: Props) => console.log(data);
 
   const inputList = formFields.map((input) => {
     if (input.type === 'small' || input.type === 'date')
@@ -53,7 +54,7 @@ const Form: React.FC<FormProps> = ({ formFields }) => {
   );
 };
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch('http://localhost:3000/api/form', {
     method: 'GET',
     headers: {
@@ -61,10 +62,10 @@ export async function getServerSideProps() {
     },
     body: null,
   });
-  const data: FormProps = await res.json();
+  const data: Props = await res.json();
   return {
     props: data,
   };
-}
+};
 
 export default Form;
