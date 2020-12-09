@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
@@ -10,19 +11,23 @@ type User = { id: number; email: string; pin: string };
 type FetchUser = (email: string, pin: string) => Promise<User>;
 
 const registerUser: FetchUser = async (email, pin) => {
-  // TODO: hash user pin with bcrypt: hashPassword = (password) => {}
+  // TODO: hash user pin with bcrypt:
+  const hashedPin = await bcrypt.hash(pin, 8);
   const regUser = await prisma.user.create({
     data: {
       email,
-      pin,
+      pin: hashedPin,
     },
   });
+  delete regUser.pin;
+  console.log(regUser);
   return regUser;
 };
 
 const loginUser: FetchUser = async (email, password) => {
   const foundUser = await prisma.user.findUnique({
     where: { email },
+    select: { email: true, id: true, pin: true },
   });
   // TODO: function checking password: checkHashedPassword = (foundUser, pin) => {}
   return foundUser;
