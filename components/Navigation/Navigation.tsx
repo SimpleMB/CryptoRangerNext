@@ -51,5 +51,4 @@ const Navigation: React.FC = () => {
 };
 
 export default Navigation;
-// TODO: fix a to buttons coz a11y
 // TODO : animations when away from top

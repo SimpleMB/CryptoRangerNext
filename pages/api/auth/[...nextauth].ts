@@ -24,10 +24,13 @@ const registerUser: FetchUser = async (email, pin) => {
 const loginUser: FetchUser = async (email, pin) => {
   const foundUser = await prisma.user.findUnique({
     where: { email },
-    select: { email: true, id: true, pin: true },
+    select: { id: true, email: true, pin: true },
   });
   const isPinOk = await bcrypt.compare(pin, foundUser.pin);
-  if (isPinOk) return foundUser;
+  if (isPinOk) {
+    delete foundUser.pin;
+    return foundUser;
+  }
   return null;
 };
 
