@@ -10,14 +10,13 @@ type User = { id: number; email: string; pin: string };
 type FetchUser = (email: string, pin: string) => Promise<User>;
 
 const registerUser: FetchUser = async (email, pin) => {
-  // TODO: hash user pin with bcrypt
+  // TODO: hash user pin with bcrypt: hashPassword = (password) => {}
   const regUser = await prisma.user.create({
     data: {
       email,
       pin,
     },
   });
-  console.log('registering user: ', regUser);
   return regUser;
 };
 
@@ -25,18 +24,11 @@ const loginUser: FetchUser = async (email, password) => {
   const foundUser = await prisma.user.findUnique({
     where: { email },
   });
-  console.log('found user: ', foundUser);
-  // TODO: function checking password: checkPassword = (foundUser, pin) => {}
+  // TODO: function checking password: checkHashedPassword = (foundUser, pin) => {}
   return foundUser;
 };
 
-// where to put this controller?
-type GetUser = (
-  isRegistration: string,
-  email: string,
-  pin: string
-) => Promise<User>;
-const getUser: GetUser = async (isRegistration, email, pin) => {
+const getUser = async (isRegistration: string, email: string, pin: string) => {
   if (isRegistration === 'true') return registerUser(email, pin);
   if (isRegistration === 'false') return loginUser(email, pin);
   return null;
@@ -51,7 +43,7 @@ const options = {
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
-        const { isRegistration, email, password: pin } = credentials;
+        const { isRegistration, email, pin } = credentials;
         const user = await getUser(isRegistration, email, pin);
         if (user) {
           return Promise.resolve(user);

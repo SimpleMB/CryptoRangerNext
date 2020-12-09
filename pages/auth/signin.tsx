@@ -11,8 +11,8 @@ export default function SignIn({ csrfToken }) {
         <input name="email" type="text" />
       </label>
       <label htmlFor="password">
-        Password
-        <input name="password" type="text" />
+        Pin
+        <input name="pin" type="text" />
       </label>
       <button type="submit">Sign in</button>
     </form>
