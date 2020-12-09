@@ -21,6 +21,15 @@ const registerUser: FetchUser = async (email, pin) => {
   return regUser;
 };
 
+const loginUser: FetchUser = async (email, password) => {
+  const foundUser = await prisma.user.findUnique({
+    where: { email },
+  });
+  console.log('found user: ', foundUser);
+  // TODO: function checking password: checkPassword = (foundUser, pin) => {}
+  return foundUser;
+};
+
 // where to put this controller?
 type GetUser = (
   isRegistration: string,
@@ -28,19 +37,8 @@ type GetUser = (
   pin: string
 ) => Promise<User>;
 const getUser: GetUser = async (isRegistration, email, pin) => {
-  try {
-    if (isRegistration === 'true') return await registerUser(email, pin);
-    if (isRegistration === 'false') {
-      const foundUser = await prisma.user.findUnique({
-        where: { email },
-      });
-      console.log('found user: ', foundUser);
-      // TODO: function checking password: checkPassword = (foundUser, pin) => {}
-      return foundUser;
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  if (isRegistration === 'true') return registerUser(email, pin);
+  if (isRegistration === 'false') return loginUser(email, pin);
   return null;
 };
 
