@@ -5,22 +5,31 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// where to put this controller?
 type User = { id: number; email: string; pin: string };
-type GetUser = (a: string, b: string, c: string) => Promise<User>;
-const getUser: GetUser = async (isRegistration, email, pin) => {
+
+type FetchUser = (email: string, pin: string) => Promise<User>;
+
+const registerUser: FetchUser = async (email, pin) => {
   // TODO: hash user pin with bcrypt
+  const regUser = await prisma.user.create({
+    data: {
+      email,
+      pin,
+    },
+  });
+  console.log('registering user: ', regUser);
+  return regUser;
+};
+
+// where to put this controller?
+type GetUser = (
+  isRegistration: string,
+  email: string,
+  pin: string
+) => Promise<User>;
+const getUser: GetUser = async (isRegistration, email, pin) => {
   try {
-    if (isRegistration === 'true') {
-      const regUser = await prisma.user.create({
-        data: {
-          email,
-          pin,
-        },
-      });
-      console.log('registering user: ', regUser);
-      return regUser;
-    }
+    if (isRegistration === 'true') return await registerUser(email, pin);
     if (isRegistration === 'false') {
       const foundUser = await prisma.user.findUnique({
         where: { email },
