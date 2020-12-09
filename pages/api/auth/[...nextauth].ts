@@ -11,7 +11,6 @@ type User = { id: number; email: string; pin: string };
 type FetchUser = (email: string, pin: string) => Promise<User>;
 
 const registerUser: FetchUser = async (email, pin) => {
-  // TODO: hash user pin with bcrypt:
   const hashedPin = await bcrypt.hash(pin, 8);
   const regUser = await prisma.user.create({
     data: {
@@ -20,23 +19,22 @@ const registerUser: FetchUser = async (email, pin) => {
     },
   });
   delete regUser.pin;
-  console.log(regUser);
   return regUser;
 };
 
-const loginUser: FetchUser = async (email, password) => {
+const loginUser: FetchUser = async (email, pin) => {
   const foundUser = await prisma.user.findUnique({
     where: { email },
     select: { email: true, id: true, pin: true },
   });
-  // TODO: function checking password: checkHashedPassword = (foundUser, pin) => {}
-  return foundUser;
+  const isPinOk = await bcrypt.compare(pin, foundUser.pin);
+  if (isPinOk) return foundUser;
+  return null;
 };
 
 const getUser = async (isRegistration: string, email: string, pin: string) => {
-  if (isRegistration === 'true') return registerUser(email, pin);
   if (isRegistration === 'false') return loginUser(email, pin);
-  return null;
+  return registerUser(email, pin);
 };
 
 const options = {
