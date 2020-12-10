@@ -1,11 +1,14 @@
 import { NextPage, NextPageContext } from 'next';
 import { csrfToken as csrfTokenFunc } from 'next-auth/client';
+import { useState } from 'react';
 
 interface Props {
   csrfToken: string;
 }
 
 const SignIn: NextPage<Props> = ({ csrfToken }) => {
+  const [isRegistration, setRegistration] = useState(false);
+  if (isRegistration) return null;
   return (
     <form method="post" action="/api/auth/callback/credentials">
       <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
