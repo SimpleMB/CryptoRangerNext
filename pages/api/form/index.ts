@@ -11,3 +11,5 @@ handler.get((req, res) => {
 });
 
 export default handler;
+
+// TODO: ssr page with getServerProps
