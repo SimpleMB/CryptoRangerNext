@@ -34,9 +34,13 @@ const loginUser: FetchUser = async (email, pin) => {
   return null;
 };
 
-const getUser = async (isRegistration: string, email: string, pin: string) => {
-  if (isRegistration === 'false') return loginUser(email, pin);
-  return registerUser(email, pin);
+const logOrRegUser = async (
+  email: string,
+  pin: string,
+  pinConfirmation: string | undefined
+) => {
+  if (pinConfirmation) return registerUser(email, pin);
+  return loginUser(email, pin);
 };
 
 const options = {
@@ -48,8 +52,8 @@ const options = {
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials) => {
-        const { isRegistration, email, pin } = credentials;
-        const user = await getUser(isRegistration, email, pin);
+        const { email, pin, pinConfirmation } = credentials;
+        const user = await logOrRegUser(email, pin, pinConfirmation);
         if (user) {
           return Promise.resolve(user);
         }
