@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import styles from './Login.module.scss';
+
 interface Props {
   csrfToken: string;
   setRegistation: (arr: boolean) => void;
@@ -5,22 +8,32 @@ interface Props {
 
 const Login: React.FC<Props> = ({ csrfToken, setRegistation }) => {
   return (
-    <form method="post" action="/api/auth/callback/credentials">
-      <h2>Hello mate. Please sign in :)</h2>
-      <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-      <label htmlFor="email">
-        Email
-        <input name="email" type="text" />
-      </label>
-      <label htmlFor="password">
-        Pin
-        <input name="pin" type="text" />
-      </label>
-      <button type="submit">Sign in</button>
-      <button type="button" onClick={() => setRegistation(true)}>
-        Do you want to register? Click here
-      </button>
-    </form>
+    <main className={styles.loginWrapper}>
+      <div className={styles.leftSide}>
+        <h2>Hello mate. Please sign in :)</h2>
+      </div>
+      <form
+        method="post"
+        action="/api/auth/callback/credentials"
+        className={styles.rightSide}
+      >
+        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+        <label htmlFor="loginEmail">Email address:</label>
+        <input name="loginEmail" type="email" />
+        <label htmlFor="passwordEmail">Pin code:</label>
+        <input name="passwordEmail" type="password" />
+        <button type="submit" className={styles.signInBtn}>
+          Sign in
+        </button>
+        <button
+          type="button"
+          onClick={() => setRegistation(true)}
+          className={styles.regBtn}
+        >
+          Do you want to register? Click here
+        </button>
+      </form>
+    </main>
   );
 };
 
