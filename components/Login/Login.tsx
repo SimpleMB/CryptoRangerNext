@@ -10,7 +10,7 @@ const Login: React.FC<Props> = ({ csrfToken, setRegistation }) => {
   return (
     <main className={styles.loginWrapper}>
       <div className={styles.leftSide}>
-        <h2>Hello mate. Please sign in :)</h2>
+        <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" />
       </div>
       <form
         method="post"
@@ -30,7 +30,7 @@ const Login: React.FC<Props> = ({ csrfToken, setRegistation }) => {
           onClick={() => setRegistation(true)}
           className={styles.regBtn}
         >
-          Do you want to register? Click here
+          Do you want to register? Click here!
         </button>
       </form>
     </main>

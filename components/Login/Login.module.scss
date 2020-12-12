@@ -6,14 +6,23 @@
 }
 
 .leftSide {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
   width: 600px;
-  padding: 100px;
+  height: 500px;
+  padding: 0 60px;
+
+  img {
+    width: 50%;
+  }
 }
 .rightSide {
   display: flex;
   flex-direction: column;
   width: 600px;
-  padding: 100px;
+  height: 500px;
+  padding: 0 60px;
   border-left: 1px solid hsla(0, 0, 88, 100%);
 
   input {
@@ -32,7 +41,7 @@
   }
 
   label {
-    padding: 5px 10px;
+    padding: 10px;
     font-size: 14px;
     color: hsla(0, 0, 60, 100%);
   }
