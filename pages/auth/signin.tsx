@@ -12,7 +12,7 @@ const SignIn: NextPage<Props> = ({ csrfToken }) => {
   const [isRegistration, setRegistration] = useState(false);
   if (isRegistration)
     return <Register csrfToken={csrfToken} setRegistation={setRegistration} />;
-  return <Login csrfToken={csrfToken} setRegistation={setRegistration} />;
+  return <Login setRegistation={setRegistration} />;
 };
 
 SignIn.getInitialProps = async (context: NextPageContext) => {
