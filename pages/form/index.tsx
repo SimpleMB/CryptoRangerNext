@@ -32,9 +32,9 @@ const Form: NextPage<Props> = ({ formFields }) => {
   const onSubmit = (data: Props) => console.log(data);
 
   const inputList = formFields.map((input) => {
-    if (input.type === 'small' || input.type === 'date')
+    if (input.type === InputType.small || input.type === InputType.date)
       return <FormSmallInput key={input.id} {...input} register={register} />;
-    if (input.type === 'big')
+    if (input.type === InputType.big)
       return <FormBigInput {...input} key={input.id} register={register} />;
     return null;
   });
