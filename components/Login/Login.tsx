@@ -18,7 +18,7 @@ const Login: React.FC<Props> = ({ setRegistation }) => {
   return (
     <main className={styles.loginWrapper}>
       <div className={styles.leftSide}>
-        <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo sign" />
+        <img src="/images/cryptorangerlogo.svg" alt="Crypto Ranger logo" />
         <h2>Sign In</h2>
       </div>
       <form className={styles.rightSide} onSubmit={handleSubmit(onSubmit)}>
@@ -42,5 +42,3 @@ const Login: React.FC<Props> = ({ setRegistation }) => {
 };
 
 export default Login;
-
-// TODO incorporate react-hook-form in login component and signin function from nextAuth
