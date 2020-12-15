@@ -42,8 +42,7 @@ const options = {
         username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
         password: { label: 'Password', type: 'password' },
       },
-      authorize: async (credentials) => {
-        const { email, pin, pinConfirmation } = credentials;
+      authorize: async ({ email, pin, pinConfirmation }) => {
         let user: User;
         if (pinConfirmation) user = await registerUser(email, pin);
         if (!pinConfirmation) user = await loginUser(email, pin);
@@ -54,6 +53,11 @@ const options = {
   ],
   pages: {
     signIn: '/auth/signin',
+  },
+  callbacks: {
+    redirect: async (url: string, baseUrl: string) => {
+      return Promise.resolve(baseUrl);
+    },
   },
 };
 

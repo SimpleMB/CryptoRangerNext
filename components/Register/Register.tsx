@@ -41,3 +41,5 @@ const Register: React.FC<Props> = ({ csrfToken, setRegistation }) => {
 };
 
 export default Register;
+
+// TODO: Incorporate react-hook-form in register and signin function from nextAuth
