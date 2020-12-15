@@ -11,12 +11,14 @@ enum InputType {
   links = 'links',
 }
 
+type InputTypes = keyof typeof InputType;
+
 interface InputProps {
   id: string;
   name: string;
   label: string;
   value: string;
-  type: InputType;
+  type: InputTypes;
   rows?: number;
   required?: boolean;
 }
