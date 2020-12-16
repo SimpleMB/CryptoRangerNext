@@ -1,5 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
+import { useSession } from 'next-auth/client';
 import { useForm } from 'react-hook-form';
+import Forbiden from '../../components/Forbiden/Forbiden';
 import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
 import styles from './Form.module.scss';
@@ -28,6 +30,7 @@ interface Props {
 }
 
 const Form: NextPage<Props> = ({ formFields }) => {
+  const [session, loading] = useSession();
   const { register, handleSubmit, watch, errors } = useForm<Props>();
   const onSubmit = (data: Props) => console.log(data);
 
@@ -39,6 +42,7 @@ const Form: NextPage<Props> = ({ formFields }) => {
     return null;
   });
 
+  if (!session) return <Forbiden />;
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <img
@@ -71,3 +75,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export default Form;
+
+// TODO: loading of session - loader maby?

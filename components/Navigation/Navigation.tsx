@@ -38,9 +38,9 @@ const Navigation: React.FC = () => {
           </button>
         </li>
       </ul>
-      <button type="button" onClick={() => signIn()}>
-        hello
-      </button>
+      <Link href="/form">
+        <button type="button">hello</button>
+      </Link>
       <Link href="">
         <button type="button" className={styles.reviewBtn}>
           Get review

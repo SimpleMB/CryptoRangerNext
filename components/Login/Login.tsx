@@ -5,13 +5,14 @@ import { MouseEvent } from 'react';
 import styles from './Login.module.scss';
 
 interface Props {
+  csrfToken: string;
   setRegistation: (arr: boolean) => void;
 }
 
-const Login: React.FC<Props> = ({ setRegistation }) => {
+const Login: React.FC<Props> = ({ setRegistation, csrfToken }) => {
   const { register, handleSubmit, watch, errors } = useForm();
 
-  const onSubmit = (data: MouseEvent) => {
+  const onSubmit = async (data: MouseEvent) => {
     signIn('credentials', data);
   };
 
@@ -26,7 +27,7 @@ const Login: React.FC<Props> = ({ setRegistation }) => {
         <input name="email" type="email" ref={register} />
         <label htmlFor="pin">Pin code:</label>
         <input name="pin" type="password" ref={register} />
-        <button type="submit" className={styles.signInBtn} onClick={onSubmit}>
+        <button type="submit" className={styles.signInBtn}>
           Sign in
         </button>
         <button
