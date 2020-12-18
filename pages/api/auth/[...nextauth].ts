@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-type User = { id: number; email: string; pin?: string };
+type User = { id: number; email: string; pin?: string; uid?: number };
 type FetchUser = (email: string, pin: string) => Promise<User>;
 
 const registerUser: FetchUser = async (email, pin) => {
