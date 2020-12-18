@@ -58,6 +58,15 @@ const options = {
     redirect: async (url: string, baseUrl: string) => {
       return Promise.resolve(baseUrl);
     },
+    session: async (session, user) => {
+      const sessionWithUserId = session;
+      sessionWithUserId.user = user;
+      return Promise.resolve(sessionWithUserId);
+    },
+    jwt: async (token, user, account, profile, isNewUser) => {
+      const tokenWithId = user ? { ...token, uid: user.id } : token;
+      return Promise.resolve(tokenWithId);
+    },
   },
 };
 
