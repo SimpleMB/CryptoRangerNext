@@ -42,7 +42,8 @@ const Form: NextPage<Props> = ({ formFields }) => {
     return null;
   });
 
-  if (!session) return <Forbiden />;
+  if (!session && !loading) return <Forbiden />;
+  if (loading) return null; // loader
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <img
