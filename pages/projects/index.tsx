@@ -3,10 +3,11 @@ import { useSession } from 'next-auth/client';
 import Forbiden from '../../components/Forbiden/Forbiden';
 
 const dummyForm = {
+  userId: 1,
   formFields: [
     {
       fieldId: 'projectName',
-      name: 'projectName',
+      fieldName: 'projectName',
       label: "Project's name:",
       value: '',
       type: 'small',
@@ -14,7 +15,7 @@ const dummyForm = {
     },
     {
       fieldId: 'projectWeb',
-      name: 'projectWeb',
+      fieldName: 'projectWeb',
       label: "Project's website:",
       value: '',
       type: 'small',
@@ -22,7 +23,7 @@ const dummyForm = {
     },
     {
       fieldId: 'projectStart',
-      name: 'projectStart',
+      fieldName: 'projectStart',
       label: 'When project starts:',
       value: '2021-12-03',
       type: 'date',
@@ -30,7 +31,7 @@ const dummyForm = {
     },
     {
       fieldId: 'coreConcept',
-      name: 'coreConcept',
+      fieldName: 'coreConcept',
       label: 'Core concept of the project:',
       value: '',
       type: 'big',
@@ -39,7 +40,7 @@ const dummyForm = {
     },
     {
       fieldId: 'simpleAbout',
-      name: 'simpleAbout',
+      fieldName: 'simpleAbout',
       label: 'What is your project about? Explain it as simply as you can:',
       value: '',
       type: 'big',
@@ -48,7 +49,7 @@ const dummyForm = {
     },
     {
       fieldId: 'useExample',
-      name: 'useExample',
+      fieldName: 'useExample',
       label: 'Provide simple example of use:',
       value: '',
       type: 'big',
@@ -56,8 +57,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'products',
-      name: 'products',
+      fieldId: 'products',
+      fieldName: 'products',
       label: 'Main products:',
       value: '',
       type: 'big',
@@ -65,8 +66,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'benefits',
-      name: 'benefits',
+      fieldId: 'benefits',
+      fieldName: 'benefits',
       label: 'What are the benefits of using your products:',
       value: '',
       type: 'big',
@@ -74,8 +75,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'projectIdea',
-      name: 'projectIdea',
+      fieldId: 'projectIdea',
+      fieldName: 'projectIdea',
       label: 'How did you came up with idea to start such project?',
       value: '',
       type: 'big',
@@ -83,8 +84,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'importandToKnow',
-      name: 'importandToKnow',
+      fieldId: 'importandToKnow',
+      fieldName: 'importandToKnow',
       label:
         'What are the most importand things in your project that your future customer NEED to know?',
       value: '',
@@ -93,8 +94,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'closestCompetitor',
-      name: 'closestCompetitor',
+      fieldId: 'closestCompetitor',
+      fieldName: 'closestCompetitor',
       label: 'Who is your closest competitor?',
       value: '',
       type: 'big',
@@ -102,8 +103,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'diffCompetitor',
-      name: 'diffCompetitor',
+      fieldId: 'diffCompetitor',
+      fieldName: 'diffCompetitor',
       label:
         "What's the difference between your project and closest competitor?",
       value: '',
@@ -112,8 +113,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'advantageCompetitor',
-      name: 'advantageCompetitor',
+      fieldId: 'advantageCompetitor',
+      fieldName: 'advantageCompetitor',
       label: 'Advantages over competition:',
       value: '',
       type: 'big',
@@ -121,8 +122,8 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'futurePromotions',
-      name: 'futurePromotions',
+      fieldId: 'futurePromotions',
+      fieldName: 'futurePromotions',
       label: 'Future promotions / sales / air drops?',
       value: '',
       type: 'big',
@@ -130,16 +131,16 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'manyPeople',
-      name: 'manyPeople',
+      fieldId: 'manyPeople',
+      fieldName: 'manyPeople',
       label: 'How many people work on this project?',
       value: '',
       type: 'small',
       required: false,
     },
     {
-      id: 'aboutOwner',
-      name: 'aboutOwner',
+      fieldId: 'aboutOwner',
+      fieldName: 'aboutOwner',
       label: 'About owner of the project?',
       value: '',
       type: 'big',
@@ -147,16 +148,16 @@ const dummyForm = {
       required: false,
     },
     {
-      id: 'linksDesc',
-      name: 'linksDesc',
+      fieldId: 'linksDesc',
+      fieldName: 'linksDesc',
       label: 'Importand links to place in the video description:',
       value: '',
       type: 'links',
       required: false,
     },
     {
-      id: 'whenPublished',
-      name: 'whenPublished',
+      fieldId: 'whenPublished',
+      fieldName: 'whenPublished',
       label: 'When review must be published?',
       value: '2020-12-07',
       type: 'date',

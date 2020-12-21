@@ -14,25 +14,25 @@ model User {
   id    Int    @id @default(autoincrement())
   email String @unique
   pin   String
-  Form  Form[]
+  forms Form[]
 }
 
 model Form {
   id         Int         @id @default(autoincrement())
   formFields FormField[]
-  User       User        @relation(fields: [userId], references: [id])
-  userId     Int
+  owner      User?       @relation(fields: [ownerId], references: [id])
+  ownerId    Int?
 }
 
 model FormField {
-  id       Int     @id @default(autoincrement())
-  fieldId  String
-  name     String
-  label    String
-  value    String?
-  type     String
-  rows     Int?
-  required Boolean @default(false)
-  Form     Form?   @relation(fields: [formId], references: [id])
-  formId   Int?
+  id        Int     @id @default(autoincrement())
+  fieldId   String
+  fieldName String
+  label     String
+  value     String?
+  type      String
+  rows      Int?
+  required  Boolean @default(false)
+  form      Form?    @relation(fields: [formId], references: [id])
+  formId    Int?
 }
