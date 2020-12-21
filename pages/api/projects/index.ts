@@ -11,12 +11,32 @@ handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
   const user = { uid: 0, ...session.user };
   console.log('session: ', session);
-  const projects = prisma.form.findMany({
+  const projects = await prisma.form.findMany({
     where: {
       userId: user.uid,
     },
   });
-  res.json({ hello: 'siema' });
+  console.log('Projects api', projects);
+  res.json({ projects });
+});
+
+handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
+  const session = await getSession({ req });
+  const user = { uid: 0, ...session.user };
+
+  console.log(req.body);
+  // if (!req.body.id) {
+  //   const formCreated = await prisma.form.create({
+  //     data: { ...req.body, userId: user.uid },
+  //   });
+  //   res.json({ form: formCreated });
+  // } else {
+  //   const formUpdated = await prisma.form.update({
+  //     where: { id: req.body.id },
+  //     data: req.body,
+  //   });
+  //   res.json({ form: formUpdated });
+  // }
 });
 
 export default handler;
