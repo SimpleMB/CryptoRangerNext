@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/client';
 import Forbiden from '../../components/Forbiden/Forbiden';
 
 const dummyForm = {
-  userId: 1,
+  id: 2,
   formFields: [
     {
       fieldId: 'projectName',

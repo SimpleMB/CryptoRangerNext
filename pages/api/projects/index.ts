@@ -1,23 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
 import nc from 'next-connect';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { formModel } from '../../../models';
 
 const handler = nc<NextApiRequest, NextApiResponse>();
 
 handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getSession({ req });
-  const user = { uid: 0, ...session.user };
-  console.log('session: ', session);
-  const projects = await prisma.form.findMany({
-    where: {
-      ownerId: user.uid,
-    },
-  });
-  console.log('Projects api', projects);
-  res.json({ projects });
+  res.status(401).json({ error: 'Wrong API route' });
 });
 
 handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
@@ -26,45 +15,15 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   const { formFields, id } = req.body;
 
   console.log('post handler body: ', req.body);
-  if (!req.body.id) {
-    console.log('hello');
+  if (!id) {
     try {
-      const formCreated = await prisma.form.create({
+      const formCreated = await formModel.create({
         data: {
           formFields: {
-            create: [
-              {
-                fieldId: 'advantageCompetitor',
-                fieldName: 'advantageCompetitor',
-                label: 'Advantages over competition:',
-                value: 'asdsada',
-                type: 'big',
-                rows: 4,
-                required: false,
-              },
-              {
-                fieldId: 'futurePromotions',
-                fieldName: 'futurePromotions',
-                label: 'Future promotions / sales / air drops?',
-                value: '',
-                type: 'big',
-                rows: 4,
-                required: false,
-              },
-            ],
-
-            // formFields.map((field) => ({
-            //   fieldId: field.fieldId,
-            //   fieldName: field.fieldName,
-            //   label: field.label,
-            //   value: field.value,
-            //   type: field.type,
-            //   rows: field.rows || 1,
-            //   required: field.required,
-            // })),
+            create: formFields,
           },
           owner: {
-            connect: { id: 1 },
+            connect: { id: user.uid },
           },
         },
       });
@@ -75,11 +34,32 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } else {
     console.log('else');
-    const formUpdated = await prisma.form.update({
-      where: { id: req.body.id },
-      data: req.body,
-    });
-    res.json({ form: formUpdated });
+    try {
+      const formUpdated = await formModel.update({
+        where: { id },
+        data: {
+          formFields: {
+            update: formFields.map((field) => {
+              const newField = {
+                data: {},
+                where: { fieldId: field.fieldId },
+              };
+              for (const prop in field) {
+                // eslint-disable-next-line
+                if (field.hasOwnProperty(prop)) {
+                  newField.data[prop] = field[prop];
+                }
+              }
+              console.log(newField);
+              return newField;
+            }),
+          },
+        },
+      });
+      res.json({ form: formUpdated });
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 
