@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { useSession } from 'next-auth/client';
+import { getSession, useSession } from 'next-auth/client';
 import Forbiden from '../../components/Forbiden/Forbiden';
+import { formModel } from '../../models';
 
 const dummyForm = {
   id: 2,
@@ -196,9 +197,24 @@ const Projects: NextPage<Props> = ({ projects }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const options = { headers: { cookie: context.req.headers.cookie } };
-  const response = await fetch('http://localhost:3000/api/projects', options);
-  const projects = await response.json();
+  const session = await getSession(context);
+  // this is only for typescript / User type have no uid property
+  // this property  is added in [...nextauth] jwt callback
+  const user = { uid: 0, ...session.user };
+  const projects = await formModel.findMany({
+    where: {
+      ownerId: user.uid,
+    },
+    select: {
+      id: true,
+      formFields: {
+        where: {
+          fieldId: 'projectName',
+        },
+      },
+      ownerId: true,
+    },
+  });
   console.log('projects: ', projects);
   return {
     props: { projects },

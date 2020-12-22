@@ -64,5 +64,3 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
 });
 
 export default handler;
-
-// TODO: connect to Prisma and get user form with data
