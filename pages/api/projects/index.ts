@@ -14,7 +14,6 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   const user = { uid: 0, ...session.user };
   const { formFields, id } = req.body;
 
-  console.log('post handler body: ', req.body);
   if (!id) {
     try {
       const formCreated = await formModel.create({

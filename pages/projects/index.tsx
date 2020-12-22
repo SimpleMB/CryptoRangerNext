@@ -4,7 +4,6 @@ import Forbiden from '../../components/Forbiden/Forbiden';
 import { formModel } from '../../models';
 
 const dummyForm = {
-  id: 2,
   formFields: [
     {
       fieldId: 'projectName',
@@ -26,7 +25,7 @@ const dummyForm = {
       fieldId: 'projectStart',
       fieldName: 'projectStart',
       label: 'When project starts:',
-      value: '2021-12-03',
+      value: '',
       type: 'date',
       required: true,
     },
@@ -160,7 +159,7 @@ const dummyForm = {
       fieldId: 'whenPublished',
       fieldName: 'whenPublished',
       label: 'When review must be published?',
-      value: '2020-12-07',
+      value: '',
       type: 'date',
       required: true,
     },
@@ -172,18 +171,15 @@ interface Props {
 
 const Projects: NextPage<Props> = ({ projects }) => {
   const [session, loading] = useSession();
-  console.log(projects);
 
   const sendNewForm = async () => {
-    console.log('sending new form...');
-    const response = await fetch('http://localhost:3000/api/projects', {
+    await fetch('http://localhost:3000/api/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(dummyForm),
     });
-    console.log(response);
   };
 
   if (!session && !loading) return <Forbiden />;
@@ -199,7 +195,7 @@ const Projects: NextPage<Props> = ({ projects }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   // this is only for typescript / User type have no uid property
-  // this property  is added in [...nextauth] jwt callback
+  // this property  is added in [...nextauth] jwt callback but is not visible in type USER
   const user = { uid: 0, ...session.user };
   const projects = await formModel.findMany({
     where: {
