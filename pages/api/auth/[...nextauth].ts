@@ -1,17 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
-import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import { SessionBase } from 'next-auth/_utils';
+import { userModel } from '../../../models';
 
-const prisma = new PrismaClient();
+interface SessionWithId extends SessionBase {
+  id: number;
+}
+
+interface Token {
+  email: string;
+  uid: number;
+  iat: number;
+  exp: number;
+}
 
 type User = { id: number; email: string; pin?: string; uid?: number };
 type FetchUser = (email: string, pin: string) => Promise<User>;
 
 const registerUser: FetchUser = async (email, pin) => {
   const hashedPin = await bcrypt.hash(pin, 8);
-  const regUser = await prisma.user.create({
+  const regUser = await userModel.create({
     select: { id: true, email: true },
     data: {
       email,
@@ -22,7 +32,7 @@ const registerUser: FetchUser = async (email, pin) => {
 };
 
 const loginUser: FetchUser = async (email, pin) => {
-  const foundUser = await prisma.user.findUnique({
+  const foundUser = await userModel.findUnique({
     where: { email },
     select: { id: true, email: true, pin: true },
   });
@@ -58,12 +68,13 @@ const options = {
     redirect: async (url: string, baseUrl: string) => {
       return Promise.resolve(baseUrl);
     },
-    session: async (session, user) => {
+    session: async (session: SessionWithId, user: User) => {
       const sessionWithUserId = session;
-      sessionWithUserId.user = user;
+      // Adding user id from db to session object
+      sessionWithUserId.id = user.uid;
       return Promise.resolve(sessionWithUserId);
     },
-    jwt: async (token, user, account, profile, isNewUser) => {
+    jwt: async (token: Token, user: User) => {
       const tokenWithId = user ? { ...token, uid: user.id } : token;
       return Promise.resolve(tokenWithId);
     },

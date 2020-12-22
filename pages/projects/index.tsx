@@ -211,7 +211,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ownerId: true,
     },
   });
-  console.log('projects: ', projects);
   return {
     props: { projects },
   };
