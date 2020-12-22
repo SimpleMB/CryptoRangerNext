@@ -194,12 +194,9 @@ const Projects: NextPage<Props> = ({ projects }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
-  // this is only for typescript / User type have no uid property
-  // this property  is added in [...nextauth] jwt callback but is not visible in type USER
-  const user = { uid: 0, ...session.user };
   const projects = await formModel.findMany({
     where: {
-      ownerId: user.uid,
+      ownerId: session.id,
     },
     select: {
       id: true,
