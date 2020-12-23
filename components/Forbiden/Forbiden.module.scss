@@ -4,8 +4,15 @@
   height: 100vh;
 }
 
-.btnSignIn {
-  background-color: transparent;
+.signInBtn {
+  width: 300px;
+  padding: 20px 20px;
+  background-color: hsla(211, 51, 50, 100%);
   border: none;
+  border-radius: 10px;
+  color: hsla(0, 0, 100, 100%);
+  font-size: 18px;
+  font-weight: 900;
+  outline: none;
   cursor: pointer;
 }
