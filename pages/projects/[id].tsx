@@ -17,8 +17,8 @@ enum InputType {
 type InputTypes = keyof typeof InputType;
 
 interface InputProps {
-  id: string;
-  name: string;
+  fieldId: string;
+  fieldName: string;
   label: string;
   value: string;
   type: InputTypes;
@@ -27,25 +27,41 @@ interface InputProps {
 }
 
 interface Props {
+  id: number;
   formFields: InputProps[];
+  ownerId: number;
 }
 
-const Form: NextPage<Props> = ({ formFields }) => {
+const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const [session, loading] = useSession();
   const { register, handleSubmit, watch, errors } = useForm<Props>();
   const onSubmit = (data: Props) => console.log(data);
+  const isOwnerCorrect = session ? ownerId === session.id : false;
 
   const inputList = formFields.map((input) => {
     if (input.type === InputType.small || input.type === InputType.date)
-      return <FormSmallInput key={input.id} {...input} register={register} />;
+      return (
+        <FormSmallInput
+          key={input.fieldId}
+          name={input.fieldName}
+          {...input}
+          register={register}
+        />
+      );
     if (input.type === InputType.big)
-      return <FormBigInput {...input} key={input.id} register={register} />;
+      return (
+        <FormBigInput
+          {...input}
+          key={input.fieldId}
+          name={input.fieldName}
+          register={register}
+        />
+      );
     return null;
   });
 
-  console.log(formFields[0]);
-  if ((!session && !loading) || formFields[0] === undefined)
-    return <Forbiden />;
+  console.log(session && !loading && !isOwnerCorrect);
+  if (session && !loading && !isOwnerCorrect) return <Forbiden />;
   if (loading) return null; // loader
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
