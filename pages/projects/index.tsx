@@ -165,8 +165,23 @@ const dummyForm = {
     },
   ],
 };
+
+interface FormField {
+  fieldId: string;
+  fieldName: string;
+  label: string;
+  value: string;
+  type: string;
+  rows?: number;
+  required?: boolean;
+}
+interface Project {
+  id: number;
+  formFields: FormField[];
+  ownerId: number;
+}
 interface Props {
-  projects: Array<unknown>;
+  projects: Project[];
 }
 
 const Projects: NextPage<Props> = ({ projects }) => {
@@ -182,9 +197,14 @@ const Projects: NextPage<Props> = ({ projects }) => {
     });
   };
 
+  const projectsList = projects.map((project) => (
+    <li key={project.id}>{project.formFields[0].fieldName}</li>
+  ));
+
   if (!session && !loading) return <Forbiden />;
   return (
     <div>
+      <ul>{projectsList}</ul>
       <button type="button" onClick={sendNewForm}>
         Create new project
       </button>
@@ -194,23 +214,30 @@ const Projects: NextPage<Props> = ({ projects }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
-  const projects = await formModel.findMany({
-    where: {
-      ownerId: session.id,
-    },
-    select: {
-      id: true,
-      formFields: {
-        where: {
-          fieldId: 'projectName',
-        },
+  try {
+    const projects = await formModel.findMany({
+      where: {
+        ownerId: session.id,
       },
-      ownerId: true,
-    },
-  });
-  return {
-    props: { projects },
-  };
+      select: {
+        id: true,
+        formFields: {
+          where: {
+            fieldId: 'projectName',
+          },
+        },
+        ownerId: true,
+      },
+    });
+    return {
+      props: { projects },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: {}, // non serialized so if error above app throw except. on client side
+    };
+  }
 };
 
 export default Projects;

@@ -11,7 +11,6 @@ handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
 
 handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
-  const user = { uid: 0, ...session.user };
   const { formFields, id } = req.body;
 
   if (!id) {
@@ -22,7 +21,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
             create: formFields,
           },
           owner: {
-            connect: { id: user.uid },
+            connect: { id: session.id },
           },
         },
       });
