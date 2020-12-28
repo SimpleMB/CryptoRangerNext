@@ -18,7 +18,11 @@ interface Props {
 
 const Card: React.FC<Props> = ({ project }) => {
   console.log(project);
-  return <li>Enter</li>;
+  return (
+    <li>
+      {project.formFields[0].value} | Publication: {project.formFields[1].value}
+    </li>
+  );
 };
 
 export default Card;
