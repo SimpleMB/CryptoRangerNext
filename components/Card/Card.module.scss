@@ -1,0 +1,27 @@
+.cardLink {
+  text-decoration: none;
+  color: hsla(0, 0, 50, 100%);
+}
+
+.cardWrapper {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 1px solid hsla(0, 0, 90, 100%);
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cardTitle {
+  flex: 1;
+  font-weight: 600;
+  border-right: inherit;
+}
+
+.cardPublication {
+}

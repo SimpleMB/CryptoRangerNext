@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import styles from './Card.module.scss';
+
 interface FormField {
   fieldId: string;
   fieldName: string;
@@ -19,9 +22,18 @@ interface Props {
 const Card: React.FC<Props> = ({ project }) => {
   console.log(project);
   return (
-    <li>
-      {project.formFields[0].value} | Publication: {project.formFields[1].value}
-    </li>
+    <Link href={`projects/${project.id}`}>
+      <a className={styles.cardLink}>
+        <li className={styles.cardWrapper}>
+          <span className={styles.cardTitle}>
+            {project.formFields[0].value}
+          </span>
+          <span className={styles.cardPublication}>
+            Publication: {project.formFields[1].value}
+          </span>
+        </li>
+      </a>
+    </Link>
   );
 };
 
