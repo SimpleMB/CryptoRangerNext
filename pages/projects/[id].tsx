@@ -60,14 +60,14 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
     return null;
   });
 
-  console.log(session && !loading && !isOwnerCorrect);
   if (session && !loading && !isOwnerCorrect) return <Forbiden />;
+  if (!session && !loading) return <Forbiden />;
   if (loading) return null; // loader
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <img
         src="/images/cryptorangerlogo.svg"
-        alt="Crypto Ranger logo sign"
+        alt="Crypto Ranger logo"
         className={styles.formLogo}
       />
       {inputList}

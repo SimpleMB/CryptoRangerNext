@@ -1,7 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { getSession, useSession } from 'next-auth/client';
+import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import { formModel } from '../../models';
+import styles from './Projects.module.scss';
 
 const dummyForm = {
   formFields: [
@@ -9,7 +11,7 @@ const dummyForm = {
       fieldId: 'projectName',
       fieldName: 'projectName',
       label: "Project's name:",
-      value: '',
+      value: 'New project...',
       type: 'small',
       required: true,
     },
@@ -159,7 +161,7 @@ const dummyForm = {
       fieldId: 'whenPublished',
       fieldName: 'whenPublished',
       label: 'When review must be published?',
-      value: '',
+      value: '03-03-2077',
       type: 'date',
       required: true,
     },
@@ -197,13 +199,18 @@ const Projects: NextPage<Props> = ({ projects }) => {
     });
   };
 
-  const projectsList = projects.map((project) => (
-    <li key={project.id}>{project.formFields[0].fieldName}</li>
-  ));
+  const projectsList = projects
+    ? projects.map((project) => <Card key={project.id} project={project} />)
+    : [];
 
   if (!session && !loading) return <Forbiden />;
   return (
-    <div>
+    <div className={styles.projectsWrapper}>
+      <img
+        src="/images/cryptorangerlogo.svg"
+        alt="Crypto Ranger logo"
+        className={styles.projectsLogo}
+      />
       <ul>{projectsList}</ul>
       <button type="button" onClick={sendNewForm}>
         Create new project
@@ -223,7 +230,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         id: true,
         formFields: {
           where: {
-            fieldId: 'projectName',
+            OR: [
+              { fieldId: { contains: 'projectName' } },
+              { fieldId: { contains: 'whenPublished' } },
+            ],
           },
         },
         ownerId: true,

@@ -1,0 +1,12 @@
+.projectsWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 100px auto 200px;
+  max-width: 1000px;
+}
+
+.projectsLogo {
+  align-self: flex-start;
+  height: 120px;
+  margin-bottom: 100px;
+}
