@@ -21,7 +21,7 @@ const FormBigInput: React.FC<InputProps> = ({
   name,
   register,
   required,
-  defaultValue,
+  value,
   rows,
 }) => {
   return (
@@ -34,7 +34,7 @@ const FormBigInput: React.FC<InputProps> = ({
         className={styles.bigInputField}
         name={name}
         ref={register({ required })}
-        defaultValue={defaultValue}
+        defaultValue={value}
         required={required}
         rows={rows || 5}
       />
