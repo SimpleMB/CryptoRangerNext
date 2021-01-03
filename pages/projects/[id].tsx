@@ -46,36 +46,33 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
       };
     });
 
-    console.log('Modified form fields: ', modifiedFormFields);
-
     const updatedProject: Props = {
       id,
       formFields: modifiedFormFields,
       ownerId,
     };
 
-    console.log('Updated project', updatedProject);
-
-    // try {
-    //   await fetch('http://localhost:3000/api/projects', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      await fetch('http://localhost:3000/api/projects', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedProject),
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const inputList = formFields.map((input) => {
+    console.log('inputs', input);
     if (input.type === InputType.small || input.type === InputType.date)
       return (
         <FormSmallInput
+          {...input}
           key={input.fieldId}
           name={input.fieldName}
-          {...input}
           register={register}
         />
       );
@@ -126,6 +123,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         ownerId: true,
       },
     });
+    console.log(data);
     return {
       props: data || dummyProps,
     };
