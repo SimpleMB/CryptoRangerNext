@@ -37,20 +37,36 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const isOwnerCorrect = session ? ownerId === session.id : false;
 
   const { register, handleSubmit, watch, errors } = useForm<Props>();
-  const onSubmit = async (data: Props) => {
-    console.log(data);
+  const onSubmit = async (data: InputProps) => {
+    const modifiedFormFields = formFields.map((field) => {
+      const value = data[field.fieldId];
+      return {
+        ...field,
+        value,
+      };
+    });
 
-    try {
-      await fetch('http://localhost:3000/api/projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    console.log('Modified form fields: ', modifiedFormFields);
+
+    const updatedProject: Props = {
+      id,
+      formFields: modifiedFormFields,
+      ownerId,
+    };
+
+    console.log('Updated project', updatedProject);
+
+    // try {
+    //   await fetch('http://localhost:3000/api/projects', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const inputList = formFields.map((input) => {

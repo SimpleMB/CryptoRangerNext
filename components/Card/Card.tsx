@@ -20,7 +20,7 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ project }) => {
-  console.log(project);
+  console.log('Card project', project);
   return (
     <Link href={`projects/${project.id}`}>
       <a className={styles.cardLink}>
