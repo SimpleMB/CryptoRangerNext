@@ -38,3 +38,11 @@ const Card: React.FC<Props> = ({ project }) => {
 };
 
 export default Card;
+
+// List of contents:
+// 1. Project ID
+// 2. Created
+// 3. Projects name
+// 4. Payment
+// 5. Publication
+// 6. Updated

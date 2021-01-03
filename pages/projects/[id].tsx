@@ -34,9 +34,24 @@ interface Props {
 
 const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const [session, loading] = useSession();
-  const { register, handleSubmit, watch, errors } = useForm<Props>();
-  const onSubmit = (data: Props) => console.log(data);
   const isOwnerCorrect = session ? ownerId === session.id : false;
+
+  const { register, handleSubmit, watch, errors } = useForm<Props>();
+  const onSubmit = async (data: Props) => {
+    console.log(data);
+
+    try {
+      await fetch('http://localhost:3000/api/projects', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const inputList = formFields.map((input) => {
     if (input.type === InputType.small || input.type === InputType.date)
