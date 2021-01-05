@@ -71,4 +71,32 @@ handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
   }
 });
 
+// DELETE method handler
+handler.delete(async (req: NextApiRequest, res: NextApiResponse) => {
+  const { id } = req.body;
+  const session = await getSession({ req });
+
+  const isUserOwner = async () => {
+    try {
+      const foundForm = await formModel.findUnique({
+        where: {
+          id,
+        },
+      });
+      console.log('found form owner id: ', foundForm.ownerId);
+      if (foundForm.ownerId === session.id) return true;
+    } catch (err) {
+      console.log(err);
+    }
+    return false;
+  };
+
+  // try {
+  //   const formDeleted = await formModel.delete({
+  //     where: { id },
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  // }
+});
 export default handler;
