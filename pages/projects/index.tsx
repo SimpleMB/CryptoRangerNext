@@ -2,6 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getSession, useSession } from 'next-auth/client';
 import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
+import ListHeader from '../../components/ListHeader/ListHeader';
 import { formModel } from '../../models';
 import styles from './Projects.module.scss';
 
@@ -206,13 +207,21 @@ const Projects: NextPage<Props> = ({ projects }) => {
   if (!session && !loading) return <Forbiden />;
   return (
     <div className={styles.projectsWrapper}>
-      <img
-        src="/images/cryptorangerlogo.svg"
-        alt="Crypto Ranger logo"
-        className={styles.projectsLogo}
-      />
+      <div className={styles.projectsHeader}>
+        <img
+          src="/images/cryptorangerlogo.svg"
+          alt="Crypto Ranger logo"
+          className={styles.projectsLogo}
+        />
+        <h1 className={styles.projectsHeaderName}>Projects</h1>
+      </div>
+      <ListHeader />
       <ul>{projectsList}</ul>
-      <button type="button" onClick={sendNewForm}>
+      <button
+        className={styles.projectsBtn}
+        type="button"
+        onClick={sendNewForm}
+      >
         Create new project
       </button>
     </div>

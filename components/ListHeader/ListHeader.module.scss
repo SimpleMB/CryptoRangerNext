@@ -1,0 +1,16 @@
+.listHeaderWrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 6fr 3fr 2fr 2fr;
+  padding: 25px;
+  font-size: 12px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: hsla(0, 0, 20, 100%);
+  color: hsla(0, 0, 90, 100%);
+  font-weight: 600;
+  // text-align: center;
+}
+
+.headerTitle {
+  padding-left: 30px;
+}

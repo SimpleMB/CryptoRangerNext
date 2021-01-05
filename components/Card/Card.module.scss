@@ -5,22 +5,26 @@
 
 .cardWrapper {
   text-decoration: none;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 6fr 3fr 2fr 2fr;
   align-items: center;
   width: 100%;
-  margin-bottom: 15px;
   padding: 20px;
   border: 1px solid hsla(0, 0, 90, 100%);
-  border-radius: 10px;
+  border-bottom: none;
   font-size: 14px;
   cursor: pointer;
+  font-size: 12px;
+  // text-align: center;
+
+  &:hover {
+    background-color: hsla(0, 0, 98, 100%);
+  }
 }
 
 .cardTitle {
-  font-weight: 600;
-}
-
-.cardPublication {
-  font-size: 12px;
+  font-size: 14px;
+  width: 300px;
+  text-align: start;
+  padding-left: 30px;
 }
