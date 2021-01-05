@@ -26,13 +26,14 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
     });
-    console.log('form created in prisma', formCreated);
+    // console.log('form created in prisma', formCreated);
     res.json({ form: formCreated });
   } catch (error) {
     console.log(error);
   }
 });
 
+// PUT method handler
 handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
   const { formFields, id } = req.body;
   // console.log('hitted put method with body: ', req.body);
@@ -57,7 +58,7 @@ handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
                 newField.data[prop] = field[prop];
               }
             }
-            console.log('updted field:', newField);
+            // console.log('updted field:', newField);
             return newField;
           }),
         },

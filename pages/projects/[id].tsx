@@ -66,7 +66,7 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   };
 
   const inputList = formFields.map((input) => {
-    console.log('inputs', input);
+    // console.log('inputs', input);
     if (input.type === InputType.small || input.type === InputType.date)
       return (
         <FormSmallInput
@@ -123,7 +123,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         ownerId: true,
       },
     });
-    console.log(data);
+    // console.log(data);
     return {
       props: data || dummyProps,
     };

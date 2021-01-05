@@ -24,12 +24,21 @@ const Card: React.FC<Props> = ({ project }) => {
     <Link href={`projects/${project.id}`}>
       <a className={styles.cardLink}>
         <li className={styles.cardWrapper}>
+          <span className={styles.cardId}>{project.id}</span>
+          <span>12-12-2020</span>
           <span className={styles.cardTitle}>
             {project.formFields[0].value}
+          </span>
+          <span className={styles.cardPayment}>
+            Payment:{' '}
+            <span role="img" aria-label="dolar sign emoji">
+              💲⏱
+            </span>
           </span>
           <span className={styles.cardPublication}>
             Publication: {project.formFields[1].value}
           </span>
+          <span className={styles.cardUpdated}>up: 15-12-3030</span>
         </li>
       </a>
     </Link>
