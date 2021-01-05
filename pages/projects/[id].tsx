@@ -65,6 +65,16 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
     }
   };
 
+  const deleteProject = async () => {
+    await fetch('http://localhost:3000/api/projects', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    });
+  };
+
   const inputList = formFields.map((input) => {
     // console.log('inputs', input);
     if (input.type === InputType.small || input.type === InputType.date)
@@ -104,6 +114,13 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
         className={styles.formSubmitBtn}
         value="Request Review"
       />
+      <button
+        type="button"
+        className={styles.formSubmitBtn}
+        onClick={deleteProject}
+      >
+        Delete project
+      </button>
     </form>
   );
 };
