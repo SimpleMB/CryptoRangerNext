@@ -114,6 +114,8 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
         className={styles.formSubmitBtn}
         value="Request Review"
       />
+
+      {/* TODO: create project controls with delete and request buttons */}
       <button
         type="button"
         className={styles.formSubmitBtn}
