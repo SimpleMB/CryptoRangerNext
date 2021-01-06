@@ -67,8 +67,6 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
     } catch (err) {
       console.log(err);
     }
-
-    // TODO: route user to the projects
   };
 
   const deleteProject = async () => {

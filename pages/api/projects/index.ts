@@ -92,9 +92,10 @@ handler.delete(async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (await isUserOwner()) {
     try {
-      await formModel.delete({
+      const formDeleted = await formModel.delete({
         where: { id },
       });
+      res.json({ form: formDeleted });
     } catch (err) {
       console.log(err);
     }
