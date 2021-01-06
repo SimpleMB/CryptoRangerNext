@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
 import nc from 'next-connect';
 import { formModel } from '../../../models';
+import { Input } from '../../../types';
 
 const handler = nc<NextApiRequest, NextApiResponse>();
 
@@ -42,7 +43,7 @@ handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
       where: { id },
       data: {
         formFields: {
-          update: formFields.map((field) => {
+          update: formFields.map((field: Input) => {
             const newField = {
               data: {},
               where: { id: field.id },

@@ -7,29 +7,11 @@ import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
 import { formModel } from '../../models';
 import styles from './Form.module.scss';
-
-enum InputType {
-  big = 'big',
-  small = 'small',
-  date = 'date',
-  links = 'links',
-}
-
-type InputTypes = keyof typeof InputType;
-
-interface InputProps {
-  fieldId: string;
-  fieldName: string;
-  label: string;
-  value: string;
-  type: InputTypes;
-  rows?: number;
-  required?: boolean;
-}
+import { Input, InputType } from '../../types';
 
 interface Props {
   id: number;
-  formFields: InputProps[];
+  formFields: Input[];
   ownerId: number;
 }
 
@@ -39,7 +21,7 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const isOwnerCorrect = session ? ownerId === session.id : false;
 
   const { register, handleSubmit, watch, errors } = useForm<Props>();
-  const onSubmit = async (data: InputProps) => {
+  const onSubmit = async (data: Input) => {
     const modifiedFormFields = formFields.map((field) => {
       const value = data[field.fieldId];
       return {
