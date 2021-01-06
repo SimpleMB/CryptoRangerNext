@@ -55,7 +55,7 @@
   "lint-staged": {
     "*.{ts,tsx,scss,css,json}": [
       "prettier --write **/*.{ts,tsx,scss,css,json}",
-      "eslint --ext .js,.jsx,.ts,.tsx --color"
+      "eslint --color"
     ]
   }
 }

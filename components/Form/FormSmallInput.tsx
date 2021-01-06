@@ -15,7 +15,7 @@ type InputProps = React.DetailedHTMLProps<
   register: ({ required }: { required?: boolean }) => RefReturn;
 };
 
-const FormSmallInputy: React.FC<InputProps> = ({
+const FormSmallInput: React.FC<InputProps> = ({
   label,
   type,
   name,
