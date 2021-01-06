@@ -1,4 +1,3 @@
-import { signIn } from 'next-auth/client';
 import Link from 'next/link';
 import styles from './Navigation.module.scss';
 

@@ -1,11 +1,12 @@
+import firstLetterToUpperCase from '../../utils/firstLetterUppercase';
 import styles from './SectionDivider.module.scss';
 
-interface SectionDividerProps {
+interface Props {
   side: 'left' | 'right' | 'center';
 }
-const SectionDivider: React.FC<SectionDividerProps> = (props) => {
+const SectionDivider: React.FC<Props> = (props) => {
   const { side } = props;
-  const choosenSide = side.charAt(0).toUpperCase() + side.slice(1);
+  const choosenSide = firstLetterToUpperCase(side);
   return (
     <div
       className={[
@@ -13,7 +14,7 @@ const SectionDivider: React.FC<SectionDividerProps> = (props) => {
         styles.sectionDivider,
       ].join(' ')}
     >
-      <div></div>
+      <div />
     </div>
   );
 };

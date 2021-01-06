@@ -1,20 +1,12 @@
+import { LanguageTypes, ReviewType, ReviewTypes } from '../../../types';
 import styles from './CardPerkList.module.scss';
 
-interface CardDataTypes {
-  id: number;
-  type: 'free' | 'paid';
-  priceCents: number;
-  saleCents: number;
-  language: 'polish' | 'english' | 'german' | 'russian';
-  flagUri: string;
+interface Props {
+  type: ReviewTypes;
+  lang: LanguageTypes;
 }
 
-interface CardPerkListProps {
-  type: CardDataTypes['type'];
-  lang: string;
-}
-
-const CardPerkList: React.FC<CardPerkListProps> = (props) => {
+const CardPerkList: React.FC<Props> = (props) => {
   const { type, lang } = props;
 
   const freePerks = (
@@ -63,7 +55,7 @@ const CardPerkList: React.FC<CardPerkListProps> = (props) => {
     </ul>
   );
 
-  return type === 'free' ? freePerks : paidPerks;
+  return type === ReviewType.free ? freePerks : paidPerks;
 };
 
 export default CardPerkList;

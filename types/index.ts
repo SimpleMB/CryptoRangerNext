@@ -47,6 +47,15 @@ export interface Project {
   ownerId: number;
 }
 
+export interface Review {
+  id: number;
+  type: ReviewTypes;
+  priceCents: number;
+  saleCents: number;
+  language: LanguageTypes;
+  flagUri: string;
+}
+
 // *****************************   Functions   ************************************
 
 /**
@@ -63,6 +72,22 @@ export enum InputType {
   links = 'links',
 }
 
+export enum Languages {
+  polish = 'polish',
+  english = 'english',
+  german = 'german',
+  russian = 'russian',
+}
+
+export enum ReviewType {
+  free = 'free',
+  paid = 'paid',
+}
+
 // *****************************   Unions   ************************************
 
 export type InputTypes = keyof typeof InputType;
+
+export type LanguageTypes = keyof typeof Languages;
+
+export type ReviewTypes = keyof typeof ReviewType;

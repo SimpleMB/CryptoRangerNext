@@ -1,11 +1,11 @@
 import styles from './AboutStats.module.scss';
 
-interface AboutStatsProps {
+interface Props {
   views: number;
   subs: number;
   projects: number;
 }
-const AboutStats: React.FC<AboutStatsProps> = (props) => {
+const AboutStats: React.FC<Props> = (props) => {
   const { views, subs, projects } = props;
   return (
     <div className={styles.aboutStats}>

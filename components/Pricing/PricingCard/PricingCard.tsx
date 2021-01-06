@@ -1,18 +1,11 @@
 import Link from 'next/link';
+import { Review, ReviewType } from '../../../types';
 import firstLetterUppercase from '../../../utils/firstLetterUppercase';
 import CardPerkList from '../CardPerkList/CardPerkList';
 import styles from './PricingCard.module.scss';
 
-interface CardDataTypes {
-  id: number;
-  type: 'free' | 'paid';
-  priceCents: number;
-  saleCents: number;
-  language: 'polish' | 'english' | 'german' | 'russian';
-  flagUri: string;
-}
 interface PricingCardProps {
-  data: CardDataTypes;
+  data: Review;
 }
 
 const PricingCard: React.FC<PricingCardProps> = (props) => {
@@ -22,24 +15,24 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
   return (
     <li
       className={[
-        type === 'free' ? styles.freeCard : styles.paidCard,
+        type === ReviewType.free ? styles.freeCard : styles.paidCard,
         styles.card,
       ].join(' ')}
     >
       <div>
         <h3 className={styles.cardHeader}>
           <img src={flagUri} alt={`${language} flag`} />
-          {type === 'free' ? 'Free' : langUpperCase}
+          {type === ReviewType.free ? 'Free' : langUpperCase}
         </h3>
       </div>
       <h4 className={styles.cardPrice}>
         <span>$</span>
         {priceCents / 100}
       </h4>
-      <Link href="/form">
+      <Link href="/projects">
         <a
           className={[
-            type === 'free'
+            type === ReviewType.free
               ? styles.requestReviewBtnFree
               : styles.requestReviewBtnPaid,
             styles.requestReviewBtn,
@@ -48,9 +41,13 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
           Request <span>{langUpperCase}</span> Review
         </a>
       </Link>
-      <CardPerkList type={type} lang={langUpperCase} />
-      <div className={type !== 'free' ? styles.cardLine : undefined} />
-      <p className={type === 'free' ? styles.cardDisclaimer : styles.hidden}>
+      <CardPerkList type={type} lang={language} />
+      <div className={type !== ReviewType.free ? styles.cardLine : undefined} />
+      <p
+        className={
+          type === ReviewType.free ? styles.cardDisclaimer : styles.hidden
+        }
+      >
         * This period may be extended due to high demand for Pro Reviews
       </p>
     </li>

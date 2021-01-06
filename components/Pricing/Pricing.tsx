@@ -1,45 +1,31 @@
+import { Languages, Review, ReviewType } from '../../types';
 import styles from './Pricing.module.scss';
 import PricingCard from './PricingCard/PricingCard';
 import PricingFeatures from './PricingFeatures/PricingFeatures';
 
-export interface PerksData {
-  id: number;
-  title: string;
-  description: string;
-}
-
-export interface CardDataTypes {
-  id: number;
-  type: 'free' | 'paid';
-  priceCents: number;
-  saleCents: number;
-  language: 'polish' | 'english' | 'german' | 'russian';
-  flagUri: string;
-}
-
-const pricingCardsData: CardDataTypes[] = [
+const pricingCardsData: Review[] = [
   {
     id: 0,
-    type: 'free',
+    type: ReviewType.free,
     priceCents: 0,
     saleCents: 0,
-    language: 'polish',
+    language: Languages.polish,
     flagUri: '/images/plFlag.svg',
   },
   {
     id: 1,
-    type: 'paid',
+    type: ReviewType.paid,
     priceCents: 14900,
     saleCents: 5000,
-    language: 'english',
+    language: Languages.english,
     flagUri: '/images/gbFlag.svg',
   },
   {
     id: 2,
-    type: 'paid',
+    type: ReviewType.paid,
     priceCents: 9900,
     saleCents: 5000,
-    language: 'polish',
+    language: Languages.polish,
     flagUri: '/images/plFlag.svg',
   },
 ];

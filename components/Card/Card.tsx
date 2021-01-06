@@ -1,20 +1,7 @@
 import Link from 'next/link';
+import { Project } from '../../types';
 import styles from './Card.module.scss';
 
-interface FormField {
-  fieldId: string;
-  fieldName: string;
-  label: string;
-  value: string;
-  type: string;
-  rows?: number;
-  required?: boolean;
-}
-interface Project {
-  id: number;
-  formFields: FormField[];
-  ownerId: number;
-}
 interface Props {
   project: Project;
 }
