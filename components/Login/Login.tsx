@@ -5,11 +5,10 @@ import { MouseEvent } from 'react';
 import styles from './Login.module.scss';
 
 interface Props {
-  csrfToken: string;
   setRegistation: (arr: boolean) => void;
 }
 
-const Login: React.FC<Props> = ({ setRegistation, csrfToken }) => {
+const Login: React.FC<Props> = ({ setRegistation }) => {
   const { register, handleSubmit, watch, errors } = useForm();
 
   const onSubmit = async (data: MouseEvent) => {

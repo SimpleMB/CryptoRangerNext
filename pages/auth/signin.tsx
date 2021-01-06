@@ -10,9 +10,8 @@ interface Props {
 
 const SignIn: NextPage<Props> = ({ csrfToken }) => {
   const [isRegistration, setRegistration] = useState(false);
-  if (isRegistration)
-    return <Register setRegistation={setRegistration} csrfToken={csrfToken} />;
-  return <Login setRegistation={setRegistration} csrfToken={csrfToken} />;
+  if (isRegistration) return <Register setRegistation={setRegistration} />;
+  return <Login setRegistation={setRegistration} />;
 };
 
 SignIn.getInitialProps = async (context) => {
