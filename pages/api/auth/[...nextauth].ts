@@ -2,22 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import bcrypt from 'bcryptjs';
-import { SessionBase } from 'next-auth/_utils';
 import { userModel } from '../../../models';
-
-interface SessionWithId extends SessionBase {
-  id: number;
-}
-
-interface Token {
-  email: string;
-  uid: number;
-  iat: number;
-  exp: number;
-}
-
-type User = { id: number; email: string; pin?: string; uid?: number };
-type FetchUser = (email: string, pin: string) => Promise<User>;
+import { User, Token, FetchUser, SessionWithId } from '../../../types';
 
 const registerUser: FetchUser = async (email, pin) => {
   const hashedPin = await bcrypt.hash(pin, 8);

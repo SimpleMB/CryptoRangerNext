@@ -204,6 +204,8 @@ const Projects: NextPage<Props> = ({ projects }) => {
     ? projects.map((project) => <Card key={project.id} project={project} />)
     : [];
 
+  // TODO: if session is loading return Loader component (create one);
+  if (loading) return <Forbiden />;
   if (!session && !loading) return <Forbiden />;
   return (
     <div className={styles.projectsWrapper}>
@@ -230,6 +232,7 @@ const Projects: NextPage<Props> = ({ projects }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
+  if (!session) return { props: {} };
   try {
     const projects = await formModel.findMany({
       where: {
