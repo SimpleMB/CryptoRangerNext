@@ -11,16 +11,27 @@
   margin-bottom: 100px;
 }
 
+.formControls {
+  display: flex;
+  justify-content: space-between;
+}
+
 .formSubmitBtn {
   width: 300px;
-  padding: 20px 20px;
+  height: 60px;
   background-color: hsla(211, 51, 50, 100%);
   border: none;
   border-radius: 10px;
   color: hsla(0, 0, 100, 100%);
   font-size: 18px;
   font-weight: 900;
-  align-self: flex-end;
   outline: none;
   cursor: pointer;
+}
+
+.formDeleteBtn {
+  @extend .formSubmitBtn;
+  background-color: hsla(10, 70, 50, 100%);
+  width: 100px;
+  font-size: 12px;
 }

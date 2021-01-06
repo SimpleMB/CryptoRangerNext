@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { getSession, useSession } from 'next-auth/client';
 import { useForm } from 'react-hook-form';
 import Forbiden from '../../components/Forbiden/Forbiden';
@@ -33,6 +34,7 @@ interface Props {
 }
 
 const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
+  const router = useRouter();
   const [session, loading] = useSession();
   const isOwnerCorrect = session ? ownerId === session.id : false;
 
@@ -53,26 +55,33 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
     };
 
     try {
-      await fetch('http://localhost:3000/api/projects', {
+      const response = await fetch('http://localhost:3000/api/projects', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(updatedProject),
       });
+
+      if (response.ok) router.push('/projects');
     } catch (err) {
       console.log(err);
     }
+
+    // TODO: route user to the projects
   };
 
   const deleteProject = async () => {
-    await fetch('http://localhost:3000/api/projects', {
+    console.log('Deleteing project');
+    const response = await fetch('http://localhost:3000/api/projects', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ id }),
     });
+    console.log('Delete response: ', response);
+    if (response.ok) router.push('/projects');
   };
 
   const inputList = formFields.map((input) => {
@@ -109,20 +118,21 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
         className={styles.formLogo}
       />
       {inputList}
-      <input
-        type="submit"
-        className={styles.formSubmitBtn}
-        value="Request Review"
-      />
-
-      {/* TODO: create project controls with delete and request buttons */}
-      <button
-        type="button"
-        className={styles.formSubmitBtn}
-        onClick={deleteProject}
-      >
-        Delete project
-      </button>
+      <div className={styles.formControls}>
+        {/* TODO: create project controls with delete and request buttons */}
+        <button
+          type="button"
+          className={styles.formDeleteBtn}
+          onClick={deleteProject}
+        >
+          Delete project
+        </button>
+        <input
+          type="submit"
+          className={styles.formSubmitBtn}
+          value="Request Review"
+        />
+      </div>
     </form>
   );
 };
