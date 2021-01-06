@@ -4,6 +4,7 @@ import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import ListHeader from '../../components/ListHeader/ListHeader';
 import { formModel } from '../../models';
+import { Project } from '../../types';
 import styles from './Projects.module.scss';
 
 const dummyForm = {
@@ -169,20 +170,6 @@ const dummyForm = {
   ],
 };
 
-interface FormField {
-  fieldId: string;
-  fieldName: string;
-  label: string;
-  value: string;
-  type: string;
-  rows?: number;
-  required?: boolean;
-}
-interface Project {
-  id: number;
-  formFields: FormField[];
-  ownerId: number;
-}
 interface Props {
   projects: Project[];
 }

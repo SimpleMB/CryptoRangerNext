@@ -41,6 +41,12 @@ export interface Input {
   formId?: number;
 }
 
+export interface Project {
+  id: number;
+  formFields: Input[];
+  ownerId: number;
+}
+
 // *****************************   Functions   ************************************
 
 /**
