@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './Clients.module.scss';
 
-const Clients = () => {
+const Clients: React.FC = () => {
   return (
     <section className={styles.clients} id="clients">
       <h3 className={styles.clientsHeader}>Clients</h3>
