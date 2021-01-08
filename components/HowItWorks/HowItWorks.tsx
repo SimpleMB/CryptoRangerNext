@@ -1,12 +1,7 @@
 import styles from './HowItWorks.module.scss';
 import HowItWorksPoint from './HowItWorksPoint';
 import dummyHowItWorksData from '../../utils/dummies/dummyHowItWorks.json';
-
-interface HowItWorksPointData {
-  id: number;
-  title: string;
-  description: string;
-}
+import { HowItWorksPointData } from '../../types';
 
 const howItWorksData: HowItWorksPointData[] = dummyHowItWorksData;
 
