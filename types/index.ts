@@ -25,6 +25,7 @@ export interface Token {
 export interface User {
   id: number;
   email: string;
+  role?: UserRoleTypes;
   pin?: string;
   uid?: number;
 }
@@ -41,6 +42,7 @@ export interface Input {
   type: InputTypes;
   rows?: number;
   required?: boolean;
+  checked?: boolean;
   formId?: number;
 }
 
@@ -50,6 +52,11 @@ export interface Input {
 export interface Project {
   id: number;
   formFields: Input[];
+  createdAt: Date;
+  updatedAt: Date;
+  published: boolean;
+  paid: boolean;
+  requested: boolean;
   ownerId: number;
 }
 
@@ -89,6 +96,17 @@ export type FetchUser = (email: string, pin: string) => Promise<User>;
  * @example InputType.small // 'small'
  *
  */
+export enum UserRole {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+}
+
+/**
+ * Possile types of `Input` object used by UI
+ *
+ * @example InputType.small // 'small'
+ *
+ */
 export enum InputType {
   big = 'big',
   small = 'small',
@@ -120,6 +138,11 @@ export enum ReviewType {
 }
 
 // *****************************   Unions   ************************************
+
+/**
+ * Union type of `Input` object used by UI
+ */
+export type UserRoleTypes = keyof typeof UserRole;
 
 /**
  * Union type of `Input` object used by UI
