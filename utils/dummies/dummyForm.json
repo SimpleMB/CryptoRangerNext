@@ -17,6 +17,22 @@
       "required": true
     },
     {
+      "fieldId": "projectPayment",
+      "fieldName": "projectPayment",
+      "label": "Payment:",
+      "value": "paid",
+      "type": "payment",
+      "required": true
+    },
+    {
+      "fieldId": "projectLanguage",
+      "fieldName": "projectLanguage",
+      "label": "Choose language:",
+      "value": "polish",
+      "type": "small",
+      "required": true
+    },
+    {
       "fieldId": "projectStart",
       "fieldName": "projectStart",
       "label": "When project starts:",
