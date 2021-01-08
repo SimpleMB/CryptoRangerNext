@@ -3,22 +3,9 @@ import { getSession } from 'next-auth/client';
 import nc from 'next-connect';
 import { formModel } from '../../../models';
 import { Input } from '../../../types';
+import { isUserOwner } from '../../../utils/apiRequestChecker';
 
 const handler = nc<NextApiRequest, NextApiResponse>();
-
-const isUserOwner = async (projectId: number, sessionId: number) => {
-  try {
-    const foundForm = await formModel.findUnique({
-      where: {
-        id: projectId,
-      },
-    });
-    if (foundForm.ownerId === sessionId) return true;
-  } catch (error) {
-    console.log(error);
-  }
-  return false;
-};
 
 // GET method handler
 handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
