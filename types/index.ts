@@ -29,6 +29,9 @@ export interface User {
   uid?: number;
 }
 
+/**
+ * Interface for `Input` field returned from DB
+ */
 export interface Input {
   id?: number;
   fieldId: string;
@@ -41,12 +44,18 @@ export interface Input {
   formId?: number;
 }
 
+/**
+ * Interface for `Project` object returned from DB
+ */
 export interface Project {
   id: number;
   formFields: Input[];
   ownerId: number;
 }
 
+/**
+ * Interface for `Review` object used by UI in section Pricing
+ */
 export interface Review {
   id: number;
   type: ReviewTypes;
@@ -54,6 +63,15 @@ export interface Review {
   saleCents: number;
   language: LanguageTypes;
   flagUri: string;
+}
+
+/**
+ * Interface for `Point` object used by UI in section How It Works
+ */
+export interface HowItWorksPointData {
+  id: number;
+  title: string;
+  description: string;
 }
 
 // *****************************   Functions   ************************************
@@ -65,6 +83,12 @@ export type FetchUser = (email: string, pin: string) => Promise<User>;
 
 // *****************************   Enums   ************************************
 
+/**
+ * Possile types of `Input` object used by UI
+ *
+ * @example InputType.small // 'small'
+ *
+ */
 export enum InputType {
   big = 'big',
   small = 'small',
@@ -72,6 +96,12 @@ export enum InputType {
   links = 'links',
 }
 
+/**
+ * Possile languages of `Review` object used by UI
+ *
+ * @example Languages.english // 'english'
+ *
+ */
 export enum Languages {
   polish = 'polish',
   english = 'english',
@@ -79,6 +109,11 @@ export enum Languages {
   russian = 'russian',
 }
 
+/**
+ * Possile types of `Review` object used by UI
+ *
+ * @example ReviewType.free // 'free'
+ */
 export enum ReviewType {
   free = 'free',
   paid = 'paid',
@@ -86,8 +121,17 @@ export enum ReviewType {
 
 // *****************************   Unions   ************************************
 
+/**
+ * Union type of `Input` object used by UI
+ */
 export type InputTypes = keyof typeof InputType;
 
+/**
+ * Union type of `Review` object used by UI
+ */
 export type LanguageTypes = keyof typeof Languages;
 
+/**
+ * Union type of `Review` object used by UI
+ */
 export type ReviewTypes = keyof typeof ReviewType;
