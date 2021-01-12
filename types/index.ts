@@ -52,8 +52,8 @@ export interface Input {
 export interface Project {
   id: number;
   formFields: Input[];
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
   published: boolean;
   paid: boolean;
   requested: boolean;

@@ -15,6 +15,8 @@ interface Props {
 const Projects: NextPage<Props> = ({ projects }) => {
   const [session, loading] = useSession();
 
+  console.log('Projects', projects);
+
   const sendNewForm = async () => {
     await fetch('http://localhost:3000/api/projects', {
       method: 'POST',
@@ -81,8 +83,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         ownerId: true,
       },
     });
+
+    // Date objects in createdAt and updatedAt causes serialization
+    // problem with getServerSideProps in Next.js (it uses JSON)
+    // Need to convert Date object to string for below 2 properties
+    const projectsWithConvertedDates = projects.map((project) => {
+      return {
+        ...project,
+        createdAt: project.createdAt.toString(),
+        updatedAt: project.updatedAt.toString(),
+      };
+    });
     return {
-      props: { projects },
+      props: { projects: projectsWithConvertedDates },
     };
   } catch (error) {
     console.log(error);
