@@ -34,7 +34,7 @@ export interface User {
  * Interface for `Input` field returned from DB
  */
 export interface Input {
-  id?: number;
+  id?: number | string;
   fieldId: string;
   fieldName: string;
   label: string;
@@ -112,6 +112,7 @@ export enum InputType {
   small = 'small',
   date = 'date',
   links = 'links',
+  language = 'language',
 }
 
 /**

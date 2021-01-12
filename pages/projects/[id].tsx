@@ -8,6 +8,7 @@ import FormSmallInput from '../../components/Form/FormSmallInput';
 import { formModel } from '../../models';
 import styles from './Form.module.scss';
 import { Input, InputType } from '../../types';
+import FormLangInput from '../../components/Form/FormLangInput';
 
 interface Props {
   id: number;
@@ -22,33 +23,34 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
 
   const { register, handleSubmit, watch, errors } = useForm<Props>();
   const onSubmit = async (data: Input) => {
-    const modifiedFormFields = formFields.map((field) => {
-      const value = data[field.fieldId];
-      return {
-        ...field,
-        value,
-      };
-    });
+    console.log(data);
+    // const modifiedFormFields = formFields.map((field) => {
+    //   const value = data[field.fieldId];
+    //   return {
+    //     ...field,
+    //     value,
+    //   };
+    // });
 
-    const updatedProject: Props = {
-      id,
-      formFields: modifiedFormFields,
-      ownerId,
-    };
+    // const updatedProject: Props = {
+    //   id,
+    //   formFields: modifiedFormFields,
+    //   ownerId,
+    // };
 
-    try {
-      const response = await fetch('http://localhost:3000/api/projects', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedProject),
-      });
+    // try {
+    //   const response = await fetch('http://localhost:3000/api/projects', {
+    //     method: 'PUT',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(updatedProject),
+    //   });
 
-      if (response.ok) router.push('/projects');
-    } catch (err) {
-      console.log(err);
-    }
+    //   if (response.ok) router.push('/projects');
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const deleteProject = async () => {
@@ -77,6 +79,15 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
     if (input.type === InputType.big)
       return (
         <FormBigInput
+          {...input}
+          id={input.fieldId}
+          key={input.fieldId}
+          register={register}
+        />
+      );
+    if (input.type === InputType.language)
+      return (
+        <FormLangInput
           {...input}
           id={input.fieldId}
           key={input.fieldId}

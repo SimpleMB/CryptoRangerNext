@@ -25,18 +25,10 @@
       "required": true
     },
     {
-      "fieldId": "langPolish",
-      "fieldName": "langPolish",
+      "fieldId": "projectLang",
+      "fieldName": "projectLang",
       "label": "Choose language:",
       "value": "polish",
-      "type": "language",
-      "required": true
-    },
-    {
-      "fieldId": "langEnglish",
-      "fieldName": "langEnglish",
-      "label": "Choose language:",
-      "value": "english",
       "type": "language",
       "required": true
     },

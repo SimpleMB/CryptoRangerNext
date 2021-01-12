@@ -1,3 +1,4 @@
+import { Input } from '../../types';
 import styles from './FormLangInput.module.scss';
 
 type RefReturn =
@@ -7,44 +8,50 @@ type RefReturn =
   | null
   | undefined;
 
+/* eslint-disable @typescript-eslint/indent */
 type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>, // eslint-disable-line
-  HTMLInputElement // eslint-disable-line
-> & {
-  label: string;
-  register: ({ required }: { required?: boolean }) => RefReturn;
-};
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> &
+  Input & {
+    register: ({ required }: { required?: boolean }) => RefReturn;
+  };
+/* eslint-enable @typescript-eslint/indent */
 
 const FormLangInput: React.FC<InputProps> = ({
+  fieldId,
+  fieldName,
   label,
-  type,
-  name,
+  value,
   register,
   required,
-  value,
 }) => {
+  const isPolish = value.includes('polish');
+  const isEnglish = value.includes('english');
   return (
     <fieldset className={styles.langInput}>
-      <label className={styles.langInputLabel} htmlFor={name}>
+      <label className={styles.langInputLabel} htmlFor={`${fieldName}English`}>
         {label}
       </label>
       <input
-        id={name}
+        id={`${fieldId}English`}
         className={styles.langInputField}
         type="checkbox"
-        name={`${name}Polish`}
+        name={`${fieldName}English`}
         ref={register({ required })}
-        defaultValue={value}
+        defaultValue="english"
         required={required}
+        defaultChecked={isEnglish}
       />
       <input
-        id={name}
+        id={`${fieldId}Polish`}
         className={styles.langInputField}
         type="checkbox"
-        name={`${name}English`}
+        name={`${fieldName}Polish`}
         ref={register({ required })}
-        defaultValue={value}
+        defaultValue="polish"
         required={required}
+        defaultChecked={isPolish}
       />
     </fieldset>
   );
