@@ -65,13 +65,12 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   };
 
   const inputList = formFields.map((input) => {
-    // console.log('inputs', input);
     if (input.type === InputType.small || input.type === InputType.date)
       return (
         <FormSmallInput
           {...input}
+          id={input.fieldId}
           key={input.fieldId}
-          name={input.fieldName}
           register={register}
         />
       );
@@ -79,8 +78,8 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
       return (
         <FormBigInput
           {...input}
+          id={input.fieldId}
           key={input.fieldId}
-          name={input.fieldName}
           register={register}
         />
       );
@@ -132,7 +131,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         ownerId: true,
       },
     });
-    // console.log(data);
     return {
       props: data || dummyProps,
     };
