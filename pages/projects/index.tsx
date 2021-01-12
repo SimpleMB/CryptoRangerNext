@@ -73,6 +73,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             ],
           },
         },
+        createdAt: true,
+        updatedAt: true,
+        requested: true,
+        paid: true,
+        published: true,
         ownerId: true,
       },
     });
