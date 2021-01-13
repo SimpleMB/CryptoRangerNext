@@ -40,7 +40,7 @@ const FormLangInput: React.FC<InputProps> = ({
         name={`${fieldName}English`}
         ref={register({ required })}
         defaultValue="english"
-        required={required}
+        // required={required}
         defaultChecked={isEnglish}
       />
       <input
@@ -50,7 +50,7 @@ const FormLangInput: React.FC<InputProps> = ({
         name={`${fieldName}Polish`}
         ref={register({ required })}
         defaultValue="polish"
-        required={required}
+        // required={required}
         defaultChecked={isPolish}
       />
     </fieldset>

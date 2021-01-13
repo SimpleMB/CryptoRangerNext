@@ -1,3 +1,4 @@
+import { Input } from '../../types';
 import styles from './FormBigInput.module.scss';
 
 type RefReturn =
@@ -7,32 +8,35 @@ type RefReturn =
   | null
   | undefined;
 
-// eslint-disable-next-line
+/* eslint-disable @typescript-eslint/indent */
 type InputProps = React.DetailedHTMLProps<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>, // eslint-disable-line
   HTMLTextAreaElement // eslint-disable-line
-> & {
-  label: string;
-  register: ({ required }: { required?: boolean }) => RefReturn;
-};
+> &
+  Input & {
+    label: string;
+    register: ({ required }: { required?: boolean }) => RefReturn;
+  };
+/* eslint-enable @typescript-eslint/indent */
 
 const FormBigInput: React.FC<InputProps> = ({
+  fieldId,
+  fieldName,
   label,
-  name,
+  value,
   register,
   required,
-  value,
   rows,
 }) => {
   return (
     <div className={styles.bigInput}>
-      <label className={styles.bigInputLabel} htmlFor={name}>
+      <label className={styles.bigInputLabel} htmlFor={fieldName}>
         {label}
       </label>
       <textarea
-        id={name}
+        id={fieldId}
         className={styles.bigInputField}
-        name={name}
+        name={fieldName}
         ref={register({ required })}
         defaultValue={value}
         required={required}
