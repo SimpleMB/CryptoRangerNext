@@ -40,7 +40,7 @@ model FormField {
   rows      Int?
   required  Boolean  @default(false)
   checked   Boolean? @default(false)
-  form      Form     @relation(fields: [formId], references: [id])
-  formId    Int
+  form      Form?     @relation(fields: [formId], references: [id])
+  formId    Int?
 }
 
