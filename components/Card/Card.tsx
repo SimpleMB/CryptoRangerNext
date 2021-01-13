@@ -6,21 +6,47 @@ interface Props {
   project: Project;
 }
 
+// export interface Project {
+//   id: number;
+//   formFields: Input[];
+//   createdAt: Date | string;
+//   updatedAt: Date | string;
+//   published: boolean;
+//   paid: boolean;
+//   requested: boolean;
+//   ownerId: number;
+// }
+
 const Card: React.FC<Props> = ({ project }) => {
+  const {
+    id,
+    createdAt,
+    updatedAt,
+    published,
+    paid,
+    requested,
+    formFields,
+  } = project;
+  const created = new Date(createdAt).toLocaleDateString();
+  const updated = new Date(updatedAt).toLocaleDateString();
+  // const publication = new Date(formFields[1].value).toLocaleDateString();
+  const payment = paid ? (
+    <img src="/images/list-icon-paid.svg" alt="" />
+  ) : (
+    <img src="/images/list-icon-free.svg" alt="" />
+  );
+
   return (
     <Link href={`projects/${project.id}`}>
       <a className={styles.cardLink}>
         <li className={styles.cardWrapper}>
-          <div className={styles.cardId}>{project.id}</div>
-          <div>12-12-2020</div>
-          <div className={styles.cardTitle}>{project.formFields[0].value}</div>
-          <div className={styles.cardPublication}>
-            {project.formFields[1].value}
-          </div>
-          <div className={styles.cardPayment}>
-            <img src="/images/list-icon-paid.svg" alt="" />
-          </div>
-          <div className={styles.cardUpdated}>15-12-3030</div>
+          <div className={styles.cardId}>{id}</div>
+          <div>{created}</div>
+          <div className={styles.cardTitle}>{formFields[0].value}</div>
+          <div className={styles.cardPublication}>{published ? '✔' : '❌'}</div>
+          <div className={styles.cardPublication}>{requested ? '✔' : '❌'}</div>
+          <div className={styles.cardPayment}>{payment}</div>
+          <div className={styles.cardUpdated}>{updated}</div>
         </li>
       </a>
     </Link>
