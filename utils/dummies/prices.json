@@ -1,10 +1,14 @@
 {
+  "free": {
+    "priceCents": 0,
+    "salePriceCents": 0
+  },
   "polish": {
-    "priceCents": "9900",
-    "salePriceCents": "4900"
+    "priceCents": 9900,
+    "salePriceCents": 4900
   },
   "english": {
-    "price": "14900",
-    "salePrice": "9900"
+    "priceCents": 14900,
+    "salePriceCents": 9900
   }
 }

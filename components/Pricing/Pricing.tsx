@@ -2,29 +2,30 @@ import { Languages, Review, ReviewType } from '../../types';
 import styles from './Pricing.module.scss';
 import PricingCard from './PricingCard/PricingCard';
 import PricingFeatures from './PricingFeatures/PricingFeatures';
+import prices from '../../utils/dummies/prices.json';
 
 const pricingCardsData: Review[] = [
   {
     id: 0,
     type: ReviewType.free,
-    priceCents: 0,
-    saleCents: 0,
+    priceCents: prices.free.priceCents,
+    saleCents: prices.free.salePriceCents,
     language: Languages.polish,
     flagUri: '/images/plFlag.svg',
   },
   {
     id: 1,
     type: ReviewType.paid,
-    priceCents: 14900,
-    saleCents: 5000,
+    priceCents: prices.english.priceCents,
+    saleCents: prices.english.salePriceCents,
     language: Languages.english,
     flagUri: '/images/gbFlag.svg',
   },
   {
     id: 2,
     type: ReviewType.paid,
-    priceCents: 9900,
-    saleCents: 5000,
+    priceCents: prices.polish.priceCents,
+    saleCents: prices.polish.salePriceCents,
     language: Languages.polish,
     flagUri: '/images/plFlag.svg',
   },
