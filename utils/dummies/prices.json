@@ -1,0 +1,10 @@
+{
+  "polish": {
+    "priceCents": "9900",
+    "salePriceCents": "4900"
+  },
+  "english": {
+    "price": "14900",
+    "salePrice": "9900"
+  }
+}
