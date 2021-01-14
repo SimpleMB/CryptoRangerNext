@@ -10,5 +10,9 @@
   "english": {
     "priceCents": 14900,
     "salePriceCents": 9900
+  },
+  "both": {
+    "priceCents": 23900,
+    "salePriceCents": 13900
   }
 }
