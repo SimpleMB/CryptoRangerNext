@@ -6,17 +6,6 @@ interface Props {
   project: Project;
 }
 
-// export interface Project {
-//   id: number;
-//   formFields: Input[];
-//   createdAt: Date | string;
-//   updatedAt: Date | string;
-//   published: boolean;
-//   paid: boolean;
-//   requested: boolean;
-//   ownerId: number;
-// }
-
 const Card: React.FC<Props> = ({ project }) => {
   const {
     id,
@@ -27,9 +16,9 @@ const Card: React.FC<Props> = ({ project }) => {
     requested,
     formFields,
   } = project;
+
   const created = new Date(createdAt).toLocaleDateString();
   const updated = new Date(updatedAt).toLocaleDateString();
-  // const publication = new Date(formFields[1].value).toLocaleDateString();
   const payment = paid ? (
     <img src="/images/list-icon-paid.svg" alt="" />
   ) : (
@@ -54,11 +43,3 @@ const Card: React.FC<Props> = ({ project }) => {
 };
 
 export default Card;
-
-// List of contents:
-// 1. Project ID
-// 2. Created
-// 3. Projects name
-// 4. Payment
-// 5. Publication
-// 6. Updated
