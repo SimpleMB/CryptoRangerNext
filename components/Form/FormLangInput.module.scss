@@ -1,0 +1,31 @@
+.langInput {
+  width: 700px;
+  margin-bottom: 50px;
+  border: none;
+}
+
+.langInputLegend {
+  display: block;
+  padding: 3px 7px;
+  font-size: 12px;
+  color: hsla(0, 0, 60, 100%);
+}
+
+.radioWrapper {
+  border: 1px solid hsla(0, 0, 90, 100%);
+  border-radius: 10px;
+}
+
+.langInputLabel {
+  display: block;
+  font-size: 14px;
+  color: hsla(0, 0, 50, 100%);
+  padding: 10px 20px;
+  &:focus {
+    box-shadow: 0 0 0 3px hsla(200, 100, 80, 40%);
+  }
+}
+
+.langInputField {
+  margin-right: 10px;
+}

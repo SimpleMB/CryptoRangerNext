@@ -31,51 +31,53 @@ const FormLangInput: React.FC<InputProps> = ({
   const isEnglish = value.includes('english');
   return (
     <fieldset className={styles.langInput}>
-      <legend className={styles.langInputLabel}>{label}</legend>
+      <legend className={styles.langInputLegend}>{label}</legend>
 
-      <input
-        id={`${fieldId}Polish`}
-        className={styles.langInputField}
-        type="radio"
-        name={fieldName}
-        defaultValue="Polish"
-        ref={register({ required })}
-        // required={required}
-        defaultChecked={isPolish}
-      />
-      <label htmlFor={`${fieldId}Polish`}>
-        {`Polish - ${prices.polish.priceCents / 100}$`}
-      </label>
+      <div className={styles.radioWrapper}>
+        <label className={styles.langInputLabel} htmlFor={`${fieldId}Polish`}>
+          <input
+            id={`${fieldId}Polish`}
+            className={styles.langInputField}
+            type="radio"
+            name={fieldName}
+            defaultValue="Polish"
+            // ref={register({ required })}    // just for testing purposes
+            // required={required}
+            defaultChecked={isPolish}
+          />
+          {`Polish - ${prices.polish.priceCents / 100}$`}
+        </label>
 
-      <input
-        id={`${fieldId}English`}
-        className={styles.langInputField}
-        type="radio"
-        name={fieldName}
-        defaultValue="English"
-        ref={register({ required })}
-        // required={required}
-        defaultChecked={isEnglish}
-      />
-      <label htmlFor={`${fieldId}English`}>
-        {`English - ${prices.english.priceCents / 100}$`}
-      </label>
+        <label className={styles.langInputLabel} htmlFor={`${fieldId}English`}>
+          <input
+            id={`${fieldId}English`}
+            className={styles.langInputField}
+            type="radio"
+            name={fieldName}
+            defaultValue="English"
+            // ref={register({ required })}
+            // required={required}
+            defaultChecked={isEnglish}
+          />
+          {`English - ${prices.english.priceCents / 100}$`}
+        </label>
 
-      <input
-        id={`${fieldId}Both`}
-        className={styles.langInputField}
-        type="radio"
-        name={fieldName}
-        defaultValue="English"
-        ref={register({ required })}
-        // required={required}
-        defaultChecked={isEnglish}
-      />
-      <label htmlFor={`${fieldId}Polish`}>
-        {`English AND Polish (2 separate reviews) - ${
-          prices.both.priceCents / 100
-        }$`}
-      </label>
+        <label className={styles.langInputLabel} htmlFor={`${fieldId}Both`}>
+          <input
+            id={`${fieldId}Both`}
+            className={styles.langInputField}
+            type="radio"
+            name={fieldName}
+            defaultValue="English"
+            // ref={register({ required })}
+            // required={required}
+            defaultChecked={isEnglish}
+          />
+          {`English AND Polish (2 separate reviews) - ${
+            prices.both.priceCents / 100
+          }$`}
+        </label>
+      </div>
     </fieldset>
   );
 };
