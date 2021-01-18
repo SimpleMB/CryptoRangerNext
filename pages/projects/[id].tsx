@@ -23,34 +23,33 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
 
   const { register, handleSubmit, watch, errors } = useForm<Props>();
   const onSubmit = async (data: Input) => {
-    console.log(data);
-    // const modifiedFormFields = formFields.map((field) => {
-    //   const value = data[field.fieldId];
-    //   return {
-    //     ...field,
-    //     value,
-    //   };
-    // });
+    const modifiedFormFields = formFields.map((field) => {
+      const value = data[field.fieldId];
+      return {
+        ...field,
+        value,
+      };
+    });
 
-    // const updatedProject: Props = {
-    //   id,
-    //   formFields: modifiedFormFields,
-    //   ownerId,
-    // };
+    const updatedProject: Props = {
+      id,
+      formFields: modifiedFormFields,
+      ownerId,
+    };
 
-    // try {
-    //   const response = await fetch('http://localhost:3000/api/projects', {
-    //     method: 'PUT',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(updatedProject),
-    //   });
+    try {
+      const response = await fetch('http://localhost:3000/api/projects', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedProject),
+      });
 
-    //   if (response.ok) router.push('/projects');
-    // } catch (err) {
-    //   console.log(err);
-    // }
+      if (response.ok) router.push('/projects');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const deleteProject = async () => {
