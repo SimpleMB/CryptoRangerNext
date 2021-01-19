@@ -24,9 +24,39 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const { register, handleSubmit, watch, errors } = useForm<Props>();
 
   // auto-save functionality based on watch property
+  // useEffect with getValues or formState object
+  // https://react-hook-form.com/api#getValues
   console.log('watch:', watch);
 
-  const autoSave = (data) => {};
+  const autoSave = async (data) => {
+    const modifiedFormFields = formFields.map((field) => {
+      const value = data[field.fieldId];
+      return {
+        ...field,
+        value,
+      };
+    });
+
+    const updatedProject: Props = {
+      id,
+      formFields: modifiedFormFields,
+      ownerId,
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/projects', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedProject),
+      });
+
+      // show that save was successful
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const onSubmit = async (data: Input) => {
     const modifiedFormFields = formFields.map((field) => {
