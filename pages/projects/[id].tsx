@@ -22,6 +22,12 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const isOwnerCorrect = session ? ownerId === session.id : false;
 
   const { register, handleSubmit, watch, errors } = useForm<Props>();
+
+  // auto-save functionality based on watch property
+  console.log('watch:', watch);
+
+  const autoSave = (data) => {};
+
   const onSubmit = async (data: Input) => {
     const modifiedFormFields = formFields.map((field) => {
       const value = data[field.fieldId];
