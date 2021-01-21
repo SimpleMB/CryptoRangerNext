@@ -36,7 +36,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
 
 // PUT method handler
 handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
-  const { formFields, id } = req.body;
+  const { formFields, id, requested } = req.body;
   const session = await getSession({ req });
 
   if (isUserOwner(id, session.id)) {
@@ -65,10 +65,12 @@ handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
               return newField;
             }),
           },
+          requested,
         },
       });
       res.json({ form: formUpdated });
     } catch (error) {
+      console.log(error);
       res.status(403).json({ error });
     }
   }
