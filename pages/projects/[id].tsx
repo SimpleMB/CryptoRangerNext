@@ -2,6 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { getSession, useSession } from 'next-auth/client';
 import { useForm } from 'react-hook-form';
+import { useEffect, useRef } from 'react';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
@@ -21,41 +22,57 @@ const Form: NextPage<Props> = ({ id, formFields, ownerId }) => {
   const [session, loading] = useSession();
   const isOwnerCorrect = session ? ownerId === session.id : false;
 
-  const { register, handleSubmit, watch, errors } = useForm<Props>();
+  const timeId = useRef(0);
+  const { register, handleSubmit, watch, errors, formState } = useForm<Props>();
+
+  const watched = watch();
+  console.log(watched);
+
+  useEffect(() => {
+    console.log('index before clear:', timeId.current);
+    clearTimeout(timeId.current);
+    if (Object.keys(watched).length !== 0) {
+      const index = setTimeout(autoSave, 3000);
+      timeId.current = Number(index);
+      console.log('index after setTimeout: ', timeId);
+    }
+    console.log('saving...');
+  }, [watched]);
 
   // auto-save functionality based on watch property
   // useEffect with getValues or formState object
   // https://react-hook-form.com/api#getValues
-  console.log('watch:', watch);
+  // console.log('watch:', watch());
 
   const autoSave = async (data) => {
-    const modifiedFormFields = formFields.map((field) => {
-      const value = data[field.fieldId];
-      return {
-        ...field,
-        value,
-      };
-    });
+    console.log('is saved');
+    // const modifiedFormFields = formFields.map((field) => {
+    //   const value = data[field.fieldId];
+    //   return {
+    //     ...field,
+    //     value,
+    //   };
+    // });
 
-    const updatedProject: Props = {
-      id,
-      formFields: modifiedFormFields,
-      ownerId,
-    };
+    // const updatedProject: Props = {
+    //   id,
+    //   formFields: modifiedFormFields,
+    //   ownerId,
+    // };
 
-    try {
-      const response = await fetch('http://localhost:3000/api/projects', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedProject),
-      });
+    // try {
+    //   const response = await fetch('http://localhost:3000/api/projects', {
+    //     method: 'PUT',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(updatedProject),
+    //   });
 
-      // show that save was successful
-    } catch (err) {
-      console.log(err);
-    }
+    //   // show that save was successful
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const onSubmit = async (data: Input) => {
