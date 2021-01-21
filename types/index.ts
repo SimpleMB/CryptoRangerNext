@@ -47,6 +47,28 @@ export interface Input {
 }
 
 /**
+ * Interface for `Input` field returned from DB
+ */
+export interface FormValues {
+  projectName: string;
+  projectLang: string;
+  aboutOwner: string;
+  advantageCompetitor: string;
+  benefits: string;
+  closestCompetitor: string;
+  coreConcept: string;
+  diffCompetitor: string;
+  futurePromotions: string;
+  importandToKnow: string;
+  manyPeople: string;
+  products: string;
+  projectIdea: string;
+  simpleAbout: string;
+  useExample: string;
+  whenPublished: string;
+}
+
+/**
  * Interface for `Project` object returned from DB
  */
 export interface Project {
