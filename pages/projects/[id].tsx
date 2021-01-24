@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { getSession, useSession } from 'next-auth/client';
 import { useForm } from 'react-hook-form';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import FormBigInput from '../../components/Form/FormBigInput';
 import FormSmallInput from '../../components/Form/FormSmallInput';
@@ -19,50 +19,14 @@ const Form: NextPage<Project> = (props) => {
   const isOwnerCorrect = session ? ownerId === session.id : false;
 
   const timeId = useRef(0);
-  const { register, handleSubmit, watch, formState } = useForm<FormValues>();
+  const isSubmitting = useRef(false);
+  const isDeleting = useRef(false);
+
+  const { register, handleSubmit, watch } = useForm<FormValues>();
 
   const watched = watch();
 
-  useEffect(() => {
-    console.log('is submitting', formState.isSubmitting);
-    console.log('is submited', formState.isSubmitted);
-    console.log('sub times', formState.submitCount);
-    console.log('is dirty', formState.isDirty);
-    if (
-      Object.keys(watched).length !== 0 &&
-      !formState.isSubmitted &&
-      !formState.isSubmitting &&
-      formState.submitCount === 0 &&
-      formState.isDirty
-    )
-      autoSave(watched);
-  }, [watched, formState]);
-
-  const autoSave = (data: FormValues) => {
-    clearTimeout(timeId.current);
-    const index = setTimeout(() => saveProject(watched, false), 3000);
-    timeId.current = Number(index);
-  };
-
-  const sendProject = async (project: Project) => {
-    if (formState.submitCount > 0) return;
-    try {
-      const response = await fetch('http://localhost:3000/api/projects', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(project),
-      });
-      if (response.ok) router.push('/projects');
-      // show that save was successful
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const saveProject = (data: FormValues, isRequested: boolean) => {
-    console.log('is saved');
+  const updateProject = (data: FormValues, isRequested: boolean) => {
     const modifiedFormFields = formFields.map((field) => {
       const value = data[field.fieldId];
       return {
@@ -80,16 +44,38 @@ const Form: NextPage<Project> = (props) => {
     sendProject(updatedProject);
   };
 
-  const onSubmit = async (data: FormValues) => {
-    console.log('clearing timeout', timeId.current);
-    clearTimeout(timeId.current);
-    saveProject(data, true);
+  const autoSave = useCallback(
+    (data: FormValues) => {
+      clearTimeout(timeId.current);
+      if (!isSubmitting.current && !isDeleting.current) {
+        const index = setTimeout(() => updateProject(watched, false), 3000);
+        timeId.current = Number(index);
+      }
+    },
+    [timeId, isDeleting, isSubmitting, watched, updateProject]
+  );
 
-    // maby receive something form sevePRoject and then router.push
+  useEffect(() => {
+    if (Object.keys(watched).length !== 0) autoSave(watched);
+  }, [watched, autoSave]);
+
+  const sendProject = async (project: Project) => {
+    try {
+      const response = await fetch('http://localhost:3000/api/projects', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(project),
+      });
+      if (response.ok && isSubmitting.current) router.push('/projects');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const deleteProject = async () => {
-    console.log('Deleteing project');
+    isDeleting.current = true;
     const response = await fetch('http://localhost:3000/api/projects', {
       method: 'DELETE',
       headers: {
@@ -97,8 +83,15 @@ const Form: NextPage<Project> = (props) => {
       },
       body: JSON.stringify({ id }),
     });
-    console.log('Delete response: ', response);
-    if (response.ok) router.push('/projects');
+    if (response.ok) {
+      router.push('/projects');
+    }
+  };
+
+  const onSubmit = async (data: FormValues) => {
+    isSubmitting.current = true;
+    clearTimeout(timeId.current);
+    updateProject(data, true);
   };
 
   const inputList = formFields.map((input) => {
