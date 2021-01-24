@@ -26,28 +26,51 @@ const Form: NextPage<Project> = (props) => {
 
   const watched = watch();
 
-  const updateProject = (data: FormValues, isRequested: boolean) => {
-    const modifiedFormFields = formFields.map((field) => {
-      const value = data[field.fieldId];
-      return {
-        ...field,
-        value,
+  const sendProject = useCallback(
+    async (project: Project) => {
+      try {
+        const response = await fetch('http://localhost:3000/api/projects', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(project),
+        });
+        if (response.ok && isSubmitting.current) router.push('/projects');
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [router]
+  );
+
+  const updateProject = useCallback(
+    (data: FormValues, isRequested: boolean) => {
+      const modifiedFormFields = formFields.map((field) => {
+        const value = data[field.fieldId];
+        return {
+          ...field,
+          value,
+        };
+      });
+
+      const updatedProject: Project = {
+        ...props,
+        formFields: modifiedFormFields,
+        requested: isRequested,
       };
-    });
 
-    const updatedProject: Project = {
-      ...props,
-      formFields: modifiedFormFields,
-      requested: isRequested,
-    };
-
-    sendProject(updatedProject);
-  };
+      sendProject(updatedProject);
+    },
+    [formFields, props, sendProject]
+  );
 
   const autoSave = useCallback(
     (data: FormValues) => {
       clearTimeout(timeId.current);
       if (!isSubmitting.current && !isDeleting.current) {
+        console.log('is submitiing: ', isSubmitting);
+        console.log('is deleting: ', isDeleting);
         const index = setTimeout(() => updateProject(watched, false), 3000);
         timeId.current = Number(index);
       }
@@ -59,22 +82,8 @@ const Form: NextPage<Project> = (props) => {
     if (Object.keys(watched).length !== 0) autoSave(watched);
   }, [watched, autoSave]);
 
-  const sendProject = async (project: Project) => {
-    try {
-      const response = await fetch('http://localhost:3000/api/projects', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(project),
-      });
-      if (response.ok && isSubmitting.current) router.push('/projects');
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const deleteProject = async () => {
+    clearTimeout(timeId.current);
     isDeleting.current = true;
     const response = await fetch('http://localhost:3000/api/projects', {
       method: 'DELETE',
