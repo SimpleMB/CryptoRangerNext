@@ -19,10 +19,10 @@
     {
       "fieldId": "projectPayment",
       "fieldName": "projectPayment",
-      "label": "Payment:",
-      "value": "paid",
+      "label": "Payment Id (TXID):",
+      "value": "",
       "type": "payment",
-      "required": true
+      "required": false
     },
     {
       "fieldId": "projectLang",

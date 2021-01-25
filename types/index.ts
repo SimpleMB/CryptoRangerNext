@@ -135,6 +135,7 @@ export enum InputType {
   date = 'date',
   links = 'links',
   language = 'language',
+  payment = 'payment',
 }
 
 /**

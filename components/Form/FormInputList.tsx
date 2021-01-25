@@ -28,7 +28,11 @@ interface Props {
 
 const FormInputList: React.FC<Props> = ({ formFields, register }) => {
   const inputList = formFields.map((input) => {
-    if (input.type === InputType.small || input.type === InputType.date)
+    if (
+      input.type === InputType.small ||
+      input.type === InputType.date ||
+      input.type === InputType.payment
+    )
       return (
         <FormSmallInput
           {...input}
