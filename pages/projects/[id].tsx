@@ -4,12 +4,10 @@ import { getSession, useSession } from 'next-auth/client';
 import { useForm } from 'react-hook-form';
 import { useCallback, useEffect, useRef } from 'react';
 import Forbiden from '../../components/Forbiden/Forbiden';
-import FormBigInput from '../../components/Form/FormBigInput';
-import FormSmallInput from '../../components/Form/FormSmallInput';
 import { formModel } from '../../models';
 import styles from './Form.module.scss';
-import { FormValues, InputType, Project } from '../../types';
-import FormLangInput from '../../components/Form/FormLangInput';
+import { FormValues, Project } from '../../types';
+import FormInputList from '../../components/Form/FormInputList';
 
 const Form: NextPage<Project> = (props) => {
   const { id, formFields, ownerId } = props;
@@ -69,8 +67,6 @@ const Form: NextPage<Project> = (props) => {
     (data: FormValues) => {
       clearTimeout(timeId.current);
       if (!isSubmitting.current && !isDeleting.current) {
-        console.log('is submitiing: ', isSubmitting);
-        console.log('is deleting: ', isDeleting);
         const index = setTimeout(() => updateProject(watched, false), 3000);
         timeId.current = Number(index);
       }
@@ -103,37 +99,6 @@ const Form: NextPage<Project> = (props) => {
     updateProject(data, true);
   };
 
-  const inputList = formFields.map((input) => {
-    if (input.type === InputType.small || input.type === InputType.date)
-      return (
-        <FormSmallInput
-          {...input}
-          id={input.fieldId}
-          key={input.fieldId}
-          register={register}
-        />
-      );
-    if (input.type === InputType.big)
-      return (
-        <FormBigInput
-          {...input}
-          id={input.fieldId}
-          key={input.fieldId}
-          register={register}
-        />
-      );
-    if (input.type === InputType.language)
-      return (
-        <FormLangInput
-          {...input}
-          id={input.fieldId}
-          key={input.fieldId}
-          register={register}
-        />
-      );
-    return null;
-  });
-
   if (session && !loading && !isOwnerCorrect) return <Forbiden />;
   if (!session && !loading) return <Forbiden />;
   if (loading) return null; // loader
@@ -144,9 +109,8 @@ const Form: NextPage<Project> = (props) => {
         alt="Crypto Ranger logo"
         className={styles.formLogo}
       />
-      {inputList}
+      <FormInputList register={register} formFields={formFields} />
       <div className={styles.formControls}>
-        {/* TODO: create project controls with delete and request buttons */}
         <button
           type="button"
           className={styles.formDeleteBtn}
