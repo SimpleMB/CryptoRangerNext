@@ -157,4 +157,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default Form;
 
-// TODO: loading of session - loader maby?
+// Why i play around saving setTimeout index, isSubmitting, isDeleting?
+// Because I don't control watched object from ReactHookForm
+// Every time watched object changes it triggers autoSave in useEffect.
+// Why do I need to do this? Because autoSave triggers even when i switch
+// focus (like selecting different input or button, lost focus on site, etc.)
+// So when i want to request project with request btn it still triggers
+// autoSave. I need to clear every unwanted autoSave...
