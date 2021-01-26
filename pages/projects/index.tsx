@@ -4,7 +4,7 @@ import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import ListHeader from '../../components/ListHeader/ListHeader';
 import { formModel } from '../../models';
-import { Project } from '../../types';
+import { ApiRoutes, Project } from '../../types';
 import dummyForm from '../../utils/dummies/dummyForm.json';
 import styles from './Projects.module.scss';
 
@@ -16,7 +16,7 @@ const Projects: NextPage<Props> = ({ projects }) => {
   const [session, loading] = useSession();
 
   const sendNewForm = async () => {
-    await fetch('http://localhost:3000/api/projects', {
+    await fetch(ApiRoutes.projects, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import { formModel } from '../../models';
 import styles from './Form.module.scss';
-import { FormValues, Project } from '../../types';
+import { FormValues, Project, ApiRoutes } from '../../types';
 import FormInputList from '../../components/Form/FormInputList';
 
 const Form: NextPage<Project> = (props) => {
@@ -27,7 +27,7 @@ const Form: NextPage<Project> = (props) => {
   const sendProject = useCallback(
     async (project: Project) => {
       try {
-        const response = await fetch('http://localhost:3000/api/projects', {
+        const response = await fetch(ApiRoutes.projects, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const Form: NextPage<Project> = (props) => {
   const deleteProject = async () => {
     clearTimeout(timeId.current);
     isDeleting.current = true;
-    const response = await fetch('http://localhost:3000/api/projects', {
+    const response = await fetch(ApiRoutes.projects, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

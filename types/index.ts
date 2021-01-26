@@ -161,6 +161,16 @@ export enum ReviewType {
   paid = 'paid',
 }
 
+/**
+ * API routes strings. Use with fetch
+ *
+ * @example ApiRoutes.projects // 'http://localhost:3000/api/projects'
+ */
+export enum ApiRoutes {
+  projects = 'http://localhost:3000/api/projects',
+  auth = 'http://localhost:3000/api/auth',
+}
+
 // *****************************   Unions   ************************************
 
 /**
