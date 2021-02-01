@@ -36,7 +36,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
 
 // PUT method handler
 handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
-  const { formFields, id, requested } = req.body;
+  const { formFields, id, requested, paid } = req.body;
   const session = await getSession({ req });
 
   if (isUserOwner(id, session.id)) {
@@ -66,6 +66,7 @@ handler.put(async (req: NextApiRequest, res: NextApiResponse) => {
             }),
           },
           requested,
+          paid,
         },
       });
       res.json({ form: formUpdated });

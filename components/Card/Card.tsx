@@ -22,8 +22,10 @@ const Card: React.FC<Props> = ({ project }) => {
   const payment = paid ? (
     <img src="/images/list-icon-paid.svg" alt="" />
   ) : (
-    <img src="/images/list-icon-wait.svg" alt="" />
+    <img src="/images/list-icon-free.svg" alt="" />
   );
+
+  console.log(paid);
 
   return (
     <Link href={`projects/${project.id}`}>

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import { formModel } from '../../models';
 import styles from './Form.module.scss';
-import { FormValues, Project, ApiRoutes } from '../../types';
+import { FormValues, Project, ApiRoutes, InputType } from '../../types';
 import FormInputList from '../../components/Form/FormInputList';
 
 const Form: NextPage<Project> = (props) => {
@@ -26,6 +26,7 @@ const Form: NextPage<Project> = (props) => {
 
   const sendProject = useCallback(
     async (project: Project) => {
+      console.log('project ', project);
       try {
         const response = await fetch(ApiRoutes.projects, {
           method: 'PUT',
@@ -52,9 +53,12 @@ const Form: NextPage<Project> = (props) => {
         };
       });
 
+      const isPaid = data.projectLang !== 'free';
+
       const updatedProject: Project = {
         ...props,
         formFields: modifiedFormFields,
+        paid: isPaid,
         requested: isRequested,
       };
 
@@ -145,6 +149,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         id: true,
         formFields: true,
         requested: true,
+        paid: true,
         ownerId: true,
       },
     });
