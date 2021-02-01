@@ -81,15 +81,19 @@ const Form: NextPage<Project> = (props) => {
   const deleteProject = async () => {
     clearTimeout(timeId.current);
     isDeleting.current = true;
-    const response = await fetch(ApiRoutes.projects, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id }),
-    });
-    if (response.ok) {
-      router.push('/projects');
+    try {
+      const response = await fetch(ApiRoutes.projects, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }),
+      });
+      if (response.ok) {
+        router.push('/projects');
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

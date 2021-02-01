@@ -28,7 +28,7 @@
       "fieldId": "projectLang",
       "fieldName": "projectLang",
       "label": "Choose language:",
-      "value": "polish",
+      "value": "free",
       "type": "language",
       "required": true
     },
@@ -41,13 +41,12 @@
       "required": true
     },
     {
-      "fieldId": "coreConcept",
-      "fieldName": "coreConcept",
-      "label": "Core concept of the project:",
-      "value": "",
-      "type": "big",
-      "rows": 10,
-      "required": false
+      "fieldId": "whenPublished",
+      "fieldName": "whenPublished",
+      "label": "When review must be published?",
+      "value": "03-03-2077",
+      "type": "date",
+      "required": true
     },
     {
       "fieldId": "simpleAbout",
@@ -77,24 +76,6 @@
       "required": false
     },
     {
-      "fieldId": "benefits",
-      "fieldName": "benefits",
-      "label": "What are the benefits of using your products:",
-      "value": "",
-      "type": "big",
-      "rows": 4,
-      "required": false
-    },
-    {
-      "fieldId": "projectIdea",
-      "fieldName": "projectIdea",
-      "label": "How did you came up with idea to start such project?",
-      "value": "",
-      "type": "big",
-      "rows": 4,
-      "required": false
-    },
-    {
       "fieldId": "importandToKnow",
       "fieldName": "importandToKnow",
       "label": "What are the most importand things in your project that your future customer NEED to know?",
@@ -104,27 +85,9 @@
       "required": false
     },
     {
-      "fieldId": "closestCompetitor",
-      "fieldName": "closestCompetitor",
-      "label": "Who is your closest competitor?",
-      "value": "",
-      "type": "big",
-      "rows": 4,
-      "required": false
-    },
-    {
       "fieldId": "diffCompetitor",
       "fieldName": "diffCompetitor",
       "label": "What's the difference between your project and closest competitor?",
-      "value": "",
-      "type": "big",
-      "rows": 4,
-      "required": false
-    },
-    {
-      "fieldId": "advantageCompetitor",
-      "fieldName": "advantageCompetitor",
-      "label": "Advantages over competition:",
       "value": "",
       "type": "big",
       "rows": 4,
@@ -161,16 +124,8 @@
       "fieldName": "linksDesc",
       "label": "Importand links to place in the video description:",
       "value": "",
-      "type": "links",
+      "type": "big",
       "required": false
-    },
-    {
-      "fieldId": "whenPublished",
-      "fieldName": "whenPublished",
-      "label": "When review must be published?",
-      "value": "03-03-2077",
-      "type": "date",
-      "required": true
     }
   ]
 }
