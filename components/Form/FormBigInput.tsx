@@ -31,7 +31,10 @@ const FormBigInput: React.FC<InputProps> = ({
   return (
     <div className={styles.bigInput}>
       <label className={styles.bigInputLabel} htmlFor={fieldName}>
-        {label}
+        {label}{' '}
+        {required ? (
+          <span className={styles.bigInputLabelSpan}>Required</span>
+        ) : null}
       </label>
       <textarea
         id={fieldId}

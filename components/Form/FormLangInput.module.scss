@@ -4,11 +4,16 @@
   border: none;
 }
 
-.langInputLegend {
-  display: block;
+.legendWrapper {
+  display: flex;
+  justify-content: space-between;
   padding: 3px 7px;
   font-size: 12px;
   color: hsla(0, 0, 60, 100%);
+}
+
+.langInputLabelSpan {
+  color: hsla(1, 80, 50, 50%);
 }
 
 .radioWrapper {

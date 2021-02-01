@@ -34,7 +34,12 @@ const FormLangInput: React.FC<InputProps> = ({
 
   return (
     <fieldset className={styles.langInput}>
-      <legend className={styles.langInputLegend}>{label}</legend>
+      <div className={styles.legendWrapper}>
+        <legend className={styles.langInputLegend}>{label}</legend>
+        {required ? (
+          <span className={styles.langInputLabelSpan}>Required</span>
+        ) : null}
+      </div>
 
       <div className={styles.radioWrapper}>
         <label className={styles.langInputLabel} htmlFor={`${fieldId}English`}>

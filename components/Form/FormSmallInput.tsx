@@ -36,7 +36,10 @@ const FormSmallInput: React.FC<InputProps> = ({
       ].join(' ')}
     >
       <label className={styles.smallInputLabel} htmlFor={fieldName}>
-        {label}
+        {label}{' '}
+        {required ? (
+          <span className={styles.smallInputLabelSpan}>Required</span>
+        ) : null}
       </label>
       <input
         id={fieldId}

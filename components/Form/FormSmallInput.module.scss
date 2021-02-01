@@ -8,10 +8,15 @@
 }
 
 .smallInputLabel {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: 3px 7px;
   font-size: 12px;
   color: hsla(0, 0, 60, 100%);
+}
+
+.smallInputLabelSpan {
+  color: hsla(1, 80, 50, 50%);
 }
 
 .smallInputField {

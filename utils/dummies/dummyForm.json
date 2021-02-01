@@ -17,20 +17,20 @@
       "required": true
     },
     {
-      "fieldId": "projectPayment",
-      "fieldName": "projectPayment",
-      "label": "Payment Id (TXID):",
-      "value": "",
-      "type": "payment",
-      "required": false
-    },
-    {
       "fieldId": "projectLang",
       "fieldName": "projectLang",
       "label": "Choose language:",
       "value": "free",
       "type": "language",
       "required": true
+    },
+    {
+      "fieldId": "projectPayment",
+      "fieldName": "projectPayment",
+      "label": "Payment Id (TXID):",
+      "value": "",
+      "type": "payment",
+      "required": false
     },
     {
       "fieldId": "projectStart",
