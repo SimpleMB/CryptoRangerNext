@@ -25,8 +25,6 @@ const Card: React.FC<Props> = ({ project }) => {
     <img src="/images/list-icon-free.svg" alt="" />
   );
 
-  console.log(paid);
-
   return (
     <Link href={`projects/${project.id}`}>
       <a className={styles.cardLink}>
