@@ -8,6 +8,16 @@ import { ApiRoutes, Project } from '../../types';
 import dummyForm from '../../utils/dummies/dummyForm.json';
 import styles from './Projects.module.scss';
 
+const createNewProject = async () => {
+  await fetch(ApiRoutes.projects, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dummyForm),
+  });
+};
+
 interface Props {
   projects: Project[];
 }
@@ -15,22 +25,12 @@ interface Props {
 const Projects: NextPage<Props> = ({ projects }) => {
   const [session, loading] = useSession();
 
-  const sendNewForm = async () => {
-    await fetch(ApiRoutes.projects, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dummyForm),
-    });
-  };
-
   const projectsList = projects
     ? projects.map((project) => <Card key={project.id} project={project} />)
     : [];
 
   // TODO: if session is loading return Loader component (create one);
-  if (loading) return <Forbiden />;
+  if (loading) return null;
   if (!session && !loading) return <Forbiden />;
   return (
     <div className={styles.projectsWrapper}>
@@ -47,7 +47,7 @@ const Projects: NextPage<Props> = ({ projects }) => {
       <button
         className={styles.projectsBtn}
         type="button"
-        onClick={sendNewForm}
+        onClick={createNewProject}
       >
         Create new project
       </button>
