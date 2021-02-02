@@ -3,6 +3,7 @@ import { getSession, useSession } from 'next-auth/client';
 import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import ListHeader from '../../components/ListHeader/ListHeader';
+import ProjectsHeader from '../../components/ProjectsHeader/ProjectsHeader';
 import { formModel } from '../../models';
 import { ApiRoutes, Project } from '../../types';
 import dummyForm from '../../utils/dummies/dummyForm.json';
@@ -34,14 +35,7 @@ const Projects: NextPage<Props> = ({ projects }) => {
   if (!session && !loading) return <Forbiden />;
   return (
     <div className={styles.projectsWrapper}>
-      <div className={styles.projectsHeader}>
-        <img
-          src="/images/cryptorangerlogo.svg"
-          alt="Crypto Ranger logo"
-          className={styles.projectsLogo}
-        />
-        <h1 className={styles.projectsHeaderName}>Projects</h1>
-      </div>
+      <ProjectsHeader />
       <ListHeader />
       <ul>{projectsList}</ul>
       <button
