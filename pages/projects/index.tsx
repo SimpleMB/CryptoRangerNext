@@ -1,8 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { getSession, useSession } from 'next-auth/client';
-import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
-import ListHeader from '../../components/ProjectsListHeader/ProjectsListHeader';
 import ProjectsHeader from '../../components/ProjectsHeader/ProjectsHeader';
 import { formModel } from '../../models';
 import { ApiRoutes, Project } from '../../types';
