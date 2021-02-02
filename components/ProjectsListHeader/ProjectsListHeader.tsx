@@ -1,4 +1,4 @@
-import styles from './ListHeader.module.scss';
+import styles from './ProjectsListHeader.module.scss';
 
 const ListHeader: React.FC = () => {
   return (

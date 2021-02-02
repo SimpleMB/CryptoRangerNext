@@ -2,12 +2,13 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getSession, useSession } from 'next-auth/client';
 import Card from '../../components/Card/Card';
 import Forbiden from '../../components/Forbiden/Forbiden';
-import ListHeader from '../../components/ListHeader/ListHeader';
+import ListHeader from '../../components/ProjectsListHeader/ProjectsListHeader';
 import ProjectsHeader from '../../components/ProjectsHeader/ProjectsHeader';
 import { formModel } from '../../models';
 import { ApiRoutes, Project } from '../../types';
 import dummyForm from '../../utils/dummies/dummyForm.json';
 import styles from './Projects.module.scss';
+import ProjectsList from '../../components/ProjectsList/ProjectsList';
 
 const createNewProject = async () => {
   await fetch(ApiRoutes.projects, {
@@ -26,18 +27,13 @@ interface Props {
 const Projects: NextPage<Props> = ({ projects }) => {
   const [session, loading] = useSession();
 
-  const projectsList = projects
-    ? projects.map((project) => <Card key={project.id} project={project} />)
-    : [];
-
   // TODO: if session is loading return Loader component (create one);
   if (loading) return null;
   if (!session && !loading) return <Forbiden />;
   return (
     <div className={styles.projectsWrapper}>
       <ProjectsHeader />
-      <ListHeader />
-      <ul>{projectsList}</ul>
+      <ProjectsList projects={projects} />
       <button
         className={styles.projectsBtn}
         type="button"
@@ -92,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {
     console.log(error);
     return {
-      props: {}, // non serialized so if error above app throw except. on client side
+      props: { projects: [] }, // non serialized so if error above app throw except. on client side
     };
   }
 };
