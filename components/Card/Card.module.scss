@@ -4,6 +4,7 @@
 }
 
 .cardWrapper {
+  margin-bottom: -1px;
   text-decoration: none;
   display: grid;
   grid-template-columns: 1fr 2fr 6fr 2fr 2fr 2fr 2fr;
@@ -11,11 +12,9 @@
   width: 100%;
   padding: 20px;
   border: 1px solid hsla(0, 0, 90, 100%);
-  border-bottom: none;
   font-size: 14px;
   cursor: pointer;
   font-size: 12px;
-  // text-align: center;
 
   &:hover {
     background-color: hsla(0, 0, 98, 100%);
