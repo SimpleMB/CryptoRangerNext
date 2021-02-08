@@ -1,10 +1,12 @@
 .hero {
   display: flex;
-  height: calc(100vh - 200px);
-  max-width: 1500px;
+  flex-direction: column;
   margin: 0 auto;
-  @media screen and (max-width: 600px) {
-    background-color: red;
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    // background-color: red;
+    height: calc(100vh - 200px);
+    max-width: 1500px;
   }
 }
 
@@ -12,27 +14,40 @@
 .sectionRight {
   justify-self: center;
   align-self: center;
-  width: 40%;
-  // position: relative;
+  width: 90%;
+
+  @media screen and (min-width: 1200px) {
+    width: 50%;
+  }
 }
 
 .sectionLeft {
   padding: 54px;
+  order: 2;
 
   .heroHeader {
-    font-size: 68px;
-    // font-size: calc(3vw + 10px);
+    font-size: calc(6vw + 10px);
     font-weight: 900;
     color: hsla(209, 61, 43, 100%);
 
     span {
-      font-size: 72px;
-      // font-size: calc(3vw + 30px);
+      font-size: calc(6vw + 30px);
       color: hsla(43, 100, 44, 100%);
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    order: initial;
+    .heroHeader {
+      font-size: 68px;
+      span {
+        font-size: 72px;
+      }
     }
   }
 }
 
 .sectionRight {
-  width: 60%;
+  @media screen and (min-width: 1200px) {
+    width: 60%;
+  }
 }
