@@ -1,6 +1,10 @@
 .pricingFeatures {
   margin: 0 auto 100px;
-  width: 60%;
+  width: 90%;
+
+  @media screen and (min-width: 700px) {
+    width: 60%;
+  }
 }
 
 .pricingFeaturesHeader {
