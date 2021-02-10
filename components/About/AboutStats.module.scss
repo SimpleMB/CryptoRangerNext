@@ -1,15 +1,26 @@
 .aboutStats {
   display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-  padding: 0 0 75px;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 1000px) {
+    align-items: baseline;
+    flex-direction: initial;
+    padding: 0 0 75px;
+    justify-content: space-around;
+  }
 }
 
 .aboutStatTile {
+  margin: 50px;
   text-align: center;
 
   h3 {
     font-size: 50px;
     font-weight: 900;
+  }
+
+  @media screen and (min-width: 1000px) {
+    margin: initial;
   }
 }
