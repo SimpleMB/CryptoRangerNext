@@ -14,19 +14,34 @@
 .hiwList {
   list-style: none;
   display: flex;
-  justify-content: space-between;
-  padding: 100px 0;
-  //  flex-direction: column;
-  //  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
 
   li {
     width: 400px;
-    //  margin-left: -35%;
-    //  text-align: center;
   }
 
-  //   li:nth-child(even) {
-  //     margin-left: unset;
-  //     margin-right: -35%;
-  //  }
+  @media screen and (min-width: 700px) {
+    li {
+      margin-left: -35%;
+      text-align: center;
+    }
+
+    li:nth-child(even) {
+      margin-left: unset;
+      margin-right: -35%;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    padding: 100px 0;
+    flex-direction: initial;
+    justify-content: space-between;
+
+    li,
+    li:nth-child(even) {
+      margin: 0;
+    }
+  }
 }
