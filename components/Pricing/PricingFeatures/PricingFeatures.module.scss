@@ -13,11 +13,16 @@
 
 .perkList {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 50px;
-  row-gap: 50px;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
   list-style: none;
   color: hsla(0, 0, 40, 100%);
+
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 50px;
+  }
 }
 
 .perkListItem {
@@ -38,7 +43,4 @@
   span {
     font-weight: 900;
   }
-}
-
-.perkDescription {
 }
