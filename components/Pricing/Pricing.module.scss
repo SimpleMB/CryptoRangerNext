@@ -13,6 +13,9 @@
 
 .pricingList {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   list-style: none;
+  justify-content: center;
 }
