@@ -26,5 +26,3 @@ export default function Home() {
     </>
   );
 }
-
-// TODO: make mobile version of the main site
