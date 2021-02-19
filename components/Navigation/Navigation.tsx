@@ -37,10 +37,12 @@ const Navigation: React.FC = () => {
           </button>
         </li>
       </ul>
-      <Link href="">
-        <button type="button" className={styles.reviewBtn}>
-          Get review
-        </button>
+      <Link href="/projects">
+        <a>
+          <button type="button" className={styles.reviewBtn}>
+            Get review
+          </button>
+        </a>
       </Link>
     </nav>
   );
