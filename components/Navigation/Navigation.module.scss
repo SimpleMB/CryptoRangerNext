@@ -38,6 +38,7 @@
       color: hsla(0, 0, 34, 100%);
       width: 100px;
       border-radius: 20px;
+      outline: none;
       cursor: pointer;
       transition: background-color 0.5s;
     }
@@ -57,4 +58,5 @@
   text-decoration: none;
   color: hsla(0, 0, 100, 100%);
   border-radius: 20px;
+  outline: none;
 }
