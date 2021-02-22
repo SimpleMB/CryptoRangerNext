@@ -1,6 +1,6 @@
 .listHeaderWrapper {
   display: grid;
-  grid-template-columns: 1fr 2fr 6fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 4fr 2fr;
   padding: 25px;
   font-size: 12px;
   border-top-left-radius: 20px;
@@ -8,9 +8,38 @@
   background-color: hsla(0, 0, 20, 100%);
   color: hsla(0, 0, 90, 100%);
   font-weight: 600;
+
+  .headerCreated {
+    display: none;
+  }
+  .headerPublication {
+    display: none;
+  }
+  .headerRequested {
+    display: none;
+  }
+  .headerPaymentStatus {
+    display: none;
+  }
+
+  @media screen and (min-width: 700px) {
+    grid-template-columns: 1fr 2fr 6fr 2fr 2fr 2fr 2fr;
+
+    .headerCreated {
+      display: block;
+    }
+    .headerPublication {
+      display: block;
+    }
+    .headerRequested {
+      display: block;
+    }
+    .headerPaymentStatus {
+      display: block;
+    }
+  }
 }
 
 .headerTitle {
   padding-left: 30px;
-  text-align: center;
 }
