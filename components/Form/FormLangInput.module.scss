@@ -1,7 +1,11 @@
 .langInput {
-  width: 500px;
+  width: 100%;
   margin-bottom: 50px;
   border: none;
+
+  @media screen and (min-width: 550px) {
+    width: 500px;
+  }
 }
 
 .legendWrapper {
@@ -25,7 +29,7 @@
   display: block;
   font-size: 14px;
   color: hsla(0, 0, 50, 100%);
-  padding: 15px 20px;
+  padding: 15px 0 15px 20px;
   &:focus {
     box-shadow: 0 0 0 3px hsla(200, 100, 80, 40%);
   }

@@ -1,14 +1,24 @@
 .form {
   display: flex;
   flex-direction: column;
-  margin: 100px auto 200px;
+  margin: 50px auto 100px;
+  padding: 0 10px;
   max-width: 1000px;
+
+  @media screen and (min-width: 700px) {
+    margin: 100px auto 200px;
+  }
 }
 
 .formLogo {
-  align-self: flex-start;
+  align-self: center;
   height: 120px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+
+  @media screen and (min-width: 700px) {
+    align-self: flex-start;
+    margin-bottom: 100px;
+  }
 }
 
 .formControls {
@@ -17,7 +27,7 @@
 }
 
 .formSubmitBtn {
-  width: 300px;
+  padding: 0 10px;
   height: 60px;
   background-color: hsla(211, 51, 50, 100%);
   border: none;
@@ -27,6 +37,10 @@
   font-weight: 900;
   outline: none;
   cursor: pointer;
+
+  @media screen and (min-width: 700px) {
+    width: 300px;
+  }
 }
 
 .formDeleteBtn {
