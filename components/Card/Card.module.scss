@@ -7,8 +7,7 @@
   margin-bottom: -1px;
   text-decoration: none;
   display: grid;
-  grid-template-columns: 1fr 2fr 6fr 2fr 2fr 2fr 2fr;
-  align-items: center;
+  grid-template-columns: 1fr 4fr 2fr;
   width: 100%;
   padding: 20px;
   border: 1px solid hsla(0, 0, 90, 100%);
@@ -19,11 +18,41 @@
   &:hover {
     background-color: hsla(0, 0, 98, 100%);
   }
+
+  .cardCreated {
+    display: none;
+  }
+  .cardPublication {
+    display: none;
+  }
+  .cardRequested {
+    display: none;
+  }
+  .cardPaymentStatus {
+    display: none;
+  }
+
+  @media screen and (min-width: 700px) {
+    grid-template-columns: 1fr 2fr 6fr 2fr 2fr 2fr 2fr;
+
+    .cardCreated {
+      display: block;
+    }
+    .cardPublication {
+      display: block;
+    }
+    .cardRequested {
+      display: block;
+    }
+    .cardPaymentStatus {
+      display: block;
+    }
+  }
 }
 
 .cardTitle {
   font-size: 14px;
-  width: 300px;
-  text-align: start;
   padding-left: 30px;
+  @media screen and (min-width: 500px) {
+  }
 }
