@@ -2,12 +2,13 @@ import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { getSession, useSession } from 'next-auth/client';
 import { useForm } from 'react-hook-form';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Forbiden from '../../components/Forbiden/Forbiden';
 import { formModel } from '../../models';
 import styles from './Form.module.scss';
 import { FormValues, Project, ApiRoutes } from '../../types';
 import FormInputList from '../../components/Form/FormInputList';
+import DeleteModal from '../../components/Modals/DeleteModal/DeleteModal';
 
 const Form: NextPage<Project> = (props) => {
   const { id, formFields, ownerId } = props;
@@ -19,6 +20,8 @@ const Form: NextPage<Project> = (props) => {
   const timeId = useRef(0);
   const isSubmitting = useRef(false);
   const isDeleting = useRef(false);
+
+  const [modal, setModal] = useState<boolean>(false);
 
   const { register, handleSubmit, watch } = useForm<FormValues>();
 
@@ -70,7 +73,7 @@ const Form: NextPage<Project> = (props) => {
     (data: FormValues) => {
       clearTimeout(timeId.current);
       if (!isSubmitting.current && !isDeleting.current) {
-        const index = setTimeout(() => updateProject(watched, false), 3000);
+        const index = setTimeout(() => updateProject(watched, false), 2000);
         timeId.current = Number(index);
       }
     },
@@ -110,28 +113,33 @@ const Form: NextPage<Project> = (props) => {
   if (!session && !loading) return <Forbiden />;
   if (loading) return null; // loader
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <img
-        src="/images/cryptorangerlogo.svg"
-        alt="Crypto Ranger logo"
-        className={styles.formLogo}
-      />
-      <FormInputList register={register} formFields={formFields} />
-      <div className={styles.formControls}>
-        <button
-          type="button"
-          className={styles.formDeleteBtn}
-          onClick={deleteProject}
-        >
-          Delete project
-        </button>
-        <input
-          type="submit"
-          className={styles.formSubmitBtn}
-          value="Request Review"
+    <>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <img
+          src="/images/cryptorangerlogo.svg"
+          alt="Crypto Ranger logo"
+          className={styles.formLogo}
         />
-      </div>
-    </form>
+        <FormInputList register={register} formFields={formFields} />
+        <div className={styles.formControls}>
+          <button
+            type="button"
+            className={styles.formDeleteBtn}
+            onClick={() => setModal(true)}
+          >
+            Delete project
+          </button>
+          <input
+            type="submit"
+            className={styles.formSubmitBtn}
+            value="Request Review"
+          />
+        </div>
+      </form>
+      {modal && (
+        <DeleteModal showModal={setModal} deleteProject={deleteProject} />
+      )}
+    </>
   );
 };
 
