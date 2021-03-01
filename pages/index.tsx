@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <HeadIndex />
-      <Navigation />
+      <Navigation extended />
       <Hero />
       <SectionDivider side="right" />
       <About />
