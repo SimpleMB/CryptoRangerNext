@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/client';
 import Link from 'next/link';
 import styles from './Navigation.module.scss';
 
@@ -11,6 +12,7 @@ const Navigation: React.FC<Props> = ({ extended }) => {
     const desctinationElement = document.querySelector(destinationId);
     desctinationElement.scrollIntoView({ behavior: 'smooth' });
   };
+
   return (
     <nav className={styles.navigation}>
       <Link href="/">
@@ -45,7 +47,11 @@ const Navigation: React.FC<Props> = ({ extended }) => {
           </li>
         </ul>
       )}
-      <button type="button" className={styles.reviewBtn}>
+      <button
+        type="button"
+        className={styles.reviewBtn}
+        onClick={() => signIn()}
+      >
         Login to dashboard
       </button>
       {/* <Link href="/projects">
