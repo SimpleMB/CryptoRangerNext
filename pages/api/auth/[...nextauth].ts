@@ -52,6 +52,7 @@ const options = {
   },
   callbacks: {
     redirect: async (url: string, baseUrl: string) => {
+      if (url) return Promise.resolve(url);
       return Promise.resolve(baseUrl);
     },
     session: async (session: SessionWithId, user: User) => {

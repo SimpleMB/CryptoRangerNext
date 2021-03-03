@@ -12,7 +12,10 @@ const Login: React.FC<Props> = ({ setRegistation }) => {
   const { register, handleSubmit, watch, errors } = useForm();
 
   const onSubmit = async (data: MouseEvent) => {
-    signIn('credentials', data);
+    signIn('credentials', {
+      ...data,
+      callbackUrl: 'http://localhost:3000/projects',
+    });
   };
 
   return (
